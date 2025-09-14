@@ -1,0 +1,69 @@
+body {
+  background: #0d0d0d;
+  color: #f0c;
+  font-family: monospace;
+  margin: 0;
+  text-align: center;
+}
+
+header {
+  background: #111;
+  padding: 1rem;
+}
+
+nav a {
+  color: #f0c;
+  margin: 0 1rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  text-shadow: 0 0 5px #f0f;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.album-card {
+  background: #111;
+  border: 1px solid #333;
+  padding: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.album-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px #f0f;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hidden { display: none; }
+
+.modal-content {
+  background: #111;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  text-align: left;
+}
+
+#modal-close {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #f0c;
+}
