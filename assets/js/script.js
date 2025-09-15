@@ -13,10 +13,8 @@ const ALBUM_FILES = [
   'qsd-khakishorts.json'
 ];
 
-function logEgg(){
-  console.log('%cQSD REBORN — look in the corners, little secrets hide ✨','color:#ff2ea6;font-weight:700');
-}
-logEgg();
+// little easter egg
+console.log('%cQSD REBORN — look in the corners, little secrets hide ✨','color:#ff2ea6;font-weight:700');
 
 async function fetchJSON(path) {
   try {
@@ -29,6 +27,7 @@ async function fetchJSON(path) {
   }
 }
 
+// quick HEAD check if audio file exists
 async function audioExists(path) {
   try {
     const r = await fetch(path, { method: 'HEAD' });
@@ -38,6 +37,7 @@ async function audioExists(path) {
   }
 }
 
+// bot-like formatting
 function formatTrackLine(track, index) {
   let line = `${index + 1}. ${track.title || 'Untitled'}`;
   if (track.feature) {
@@ -48,7 +48,7 @@ function formatTrackLine(track, index) {
   return line;
 }
 
-/* ----- UI elements ----- */
+/* ----- UI references ----- */
 const gridEl = document.getElementById('grid');
 const emptyEl = document.getElementById('empty');
 const detailEl = document.getElementById('album-detail');
@@ -67,7 +67,7 @@ let currentTrackIndex = 0;
 
 /* ----- Albums grid ----- */
 async function loadAlbums() {
-  if (!gridEl) return; // safe guard: run only on pages with a grid
+  if (!gridEl) return; // only run on pages with #grid
   gridEl.innerHTML = '';
   const searchInput = document.getElementById('search');
 
@@ -190,23 +190,33 @@ async function openTrackModal(index) {
   currentTrackIndex = index;
   await renderTrack(currentTrackIndex);
   if (modal) {
-    modal.classList.remove('hidden');
-    modal.style.display = 'block';   // <-- force visible only here
+    modal.classList.add('show');
+    modal.style.display = 'flex'; // flex for centering
     modal.setAttribute('aria-hidden','false');
   }
   document.body.style.overflow = 'hidden';
 }
 
+function closeModal() {
+  if (modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden','true');
+    setTimeout(() => {
+      modal.style.display = 'none';
+    }, 300); // match fade-out duration
+  }
+  document.body.style.overflow = '';
+}
+
 async function renderTrack(index) {
   const t = currentTracks[index];
   if (!t) return;
+
   const base = t.filename.replace('.json','');
   const candidateOpus = `${AUDIO_DIR}/${base}.opus`;
-  const candidateMp3 = `${AUDIO_DIR}/${base}.mp3`;
 
   let audioSrc = null;
   if (await audioExists(candidateOpus)) audioSrc = candidateOpus;
-  else if (await audioExists(candidateMp3)) audioSrc = candidateMp3;
 
   modalBody.innerHTML = `
     <h3>${t.title}${t.version ? ' — '+t.version : ''}</h3>
@@ -223,7 +233,9 @@ async function renderTrack(index) {
 
   const audioWrap = document.getElementById('audio-wrap');
   audioWrap.innerHTML = audioSrc
-    ? `<audio controls preload="none" style="width:100%"><source src="${audioSrc}"></audio>`
+    ? `<audio controls preload="none" style="width:100%">
+         <source src="${audioSrc}" type="audio/ogg; codecs=opus">
+       </audio>`
     : `<div class="muted tiny">Audio file not found.</div>`;
 }
 
@@ -243,17 +255,8 @@ nextBtn?.addEventListener('click', async () => {
   await renderTrack(currentTrackIndex);
 });
 
-function closeModal() {
-  if (modal) {
-    modal.classList.add('hidden');
-    modal.style.display = 'none';    // <-- completely hides again
-    modal.setAttribute('aria-hidden','true');
-  }
-  document.body.style.overflow = '';
-}
-
 document.addEventListener('keydown', (e) => {
-  if (modal?.classList.contains('hidden')) return;
+  if (!modal || modal.getAttribute('aria-hidden') === 'true') return;
   if (e.key === 'Escape') closeModal();
   if (e.key === 'ArrowLeft') prevBtn?.click();
   if (e.key === 'ArrowRight') nextBtn?.click();
