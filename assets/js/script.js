@@ -51,7 +51,7 @@ function showAlbum(album) {
 async function showTrack(file) {
   const track = await fetchJSON(`assets/data/${file}`);
   const baseName = file.split("/").pop().replace(".json", "");
-  const audioPath = `assets/audio/${baseName}.mp3`;
+  const audioPath = `assets/audio/${baseName}.opus`;
 
   const infoDiv = document.getElementById("track-info");
   infoDiv.innerHTML = `
