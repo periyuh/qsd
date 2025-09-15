@@ -1,0 +1,23 @@
+# Node / tooling
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Build / temp files
+dist/
+build/
+.cache/
+*.tmp
+*.log
+
+# Local scripts / experiments (dev-only helpers)
+files-list.js
+download-images.js
+test.html
+file-list.txt

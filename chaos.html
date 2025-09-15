@@ -198,20 +198,26 @@
   // ---------- GALLERY ROTATION ----------
   // <<< Replaced galleryImgsPool with the exact tokenized Discord links you provided >>>
   const galleryImgsPool = [
-    "https://media.discordapp.net/attachments/1405395296216682529/1406024290561818694/Screenshot_20250815-152748.png?ex=68c73129&is=68c5dfa9&hm=786046067f977a2a93ced9e148f18444e5b6f905817fa3114467d1e4f16e9cbd&=&format=webp&quality=lossless&width=542&height=670",
-    "https://cdn.discordapp.com/attachments/1314024976264986665/1366800388577165404/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif?ex=68c6e10e&is=68c58f8e&hm=d3d3e4010e546f3d1dc481ef9fd18167ae98e510525107d065a9cdfe581425b7&",
-    "https://cdn.discordapp.com/attachments/1406028422177882223/1406028452699836488/Screenshot_20250815-183423.png?ex=68c73509&is=68c5e389&hm=acd0128980614f367d6dc829c5e167654f57768ef6d7bd765b098479c6e59089&",
-    "https://tenor.com/view/cynthia-erivo-cynthia-erivo-bald-gif-1469231491579291151.gif",
-    "https://cdn.discordapp.com/attachments/1406028422177882223/1409940630284537876/Screenshot_20250826_123929_Status.jpg?ex=68c6f009&is=68c59e89&hm=00eccbc089f5defc0a76fea68db1ed9055bb04966c5f76fab9e6e5bb569002e3&",
-    "https://media.discordapp.net/attachments/1406028422177882223/1412309471820255283/Screenshot_20250902-023303.png?ex=68c6fc71&is=68c5aaf1&hm=3f5cd5d7d9a67e9deed2282d4abf09f83a960176c46f96bb57dfd323c50bf402&=&format=webp&quality=lossless&width=302&height=670",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1412909908436979914/image.png?ex=68c73164&is=68c5dfe4&hm=4790e54b7e4fb96e0c57d4b8f6292aff4d66a18f19d0970144b36f1123fc92f1&",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1412909909246480536/image.png?ex=68c73164&is=68c5dfe4&hm=71621b27c897e74c04071aebe083cad2514133b68084c63f0dfbfd6930cc4b1a&",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1413010385711403008/Screenshot_20250904-005834.png?ex=68c6e638&is=68c594b8&hm=860302914cd30b706a1fdfd496c9ab99965105beb2d905a7aa92549296ae72ca&",
-    "https://media.discordapp.net/attachments/1405395296216682529/1413018105092903085/Screenshot_20250904_002849_TikTok.jpg?ex=68c6ed68&is=68c59be8&hm=ebff8052b4993ae8aafa94891f7426b324308f25f270c2a9f2dcf503fba8e9b8&=&format=webp&width=331&height=670",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1413182240770494594/Screenshot_20250904-122111.png?ex=68c6dd85&is=68c58c05&hm=268417f521bd041abde14d05cff75d655c83661633ccd3bc459999fbc5560975&",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1413317156979998900/Screenshot_20250904-211721.png?ex=68c6b26c&is=68c560ec&hm=da20ef47aa456429a65ac36619868c6e09a85934d2278df4710eaf8d1691cc1b&",
-    "https://cdn.discordapp.com/attachments/1405395296216682529/1413997968960262184/fitness_goals.png?ex=68c7323a&is=68c5e0ba&hm=915a24461c0ba3078924d12d9af70c94e47b18f68098af1b850ff6fd4a9901a8&"
-  ];
+  "assets/images/gallery/A9CAB54D-6C46-47E0-B7D1-1E489A964B88-ezgif.com-video-to-gif-converter.gif",
+  "assets/images/gallery/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif",
+  "assets/images/gallery/Screenshot_20250814-021832.png",
+  "assets/images/gallery/Screenshot_20250815-152748.png",
+  "assets/images/gallery/Screenshot_20250815-183423.png",
+  "assets/images/gallery/Screenshot_20250826_123929_Status.jpg",
+  "assets/images/gallery/Screenshot_20250902-023303.png",
+  "assets/images/gallery/Screenshot_20250904-005834.png",
+  "assets/images/gallery/Screenshot_20250904-122111.png",
+  "assets/images/gallery/Screenshot_20250904-191411.png",
+  "assets/images/gallery/cynthia-erivo-speechless.mp4",
+  "assets/images/gallery/cynthia-erivo.mp4",
+  "assets/images/gallery/danielsmith.png",
+  "assets/images/gallery/ethan-slater.mp4",
+  "assets/images/gallery/fitness_goals.png",
+  "assets/images/gallery/gasp-speechless.mp4",
+  "assets/images/gallery/omgcat.mp4",
+  "assets/images/gallery/touchstarved.gif"
+];
+
 
   function populateGalleryTiles() {
     const galleryContainer = document.getElementById('gallery');
@@ -460,20 +466,25 @@
       id: "screenshot-gallery",
       title: "Screenshot gallery",
       content: `<div class="gallery" id="gallery">
-            <div class="tile"><img src="https://media.discordapp.net/attachments/1405395296216682529/1406024290561818694/Screenshot_20250815-152748.png?ex=68c73129&is=68c5dfa9&hm=786046067f977a2a93ced9e148f18444e5b6f905817fa3114467d1e4f16e9cbd&=&format=webp&quality=lossless&width=542&height=670" alt="img1"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1314024976264986665/1366800388577165404/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif?ex=68c6e10e&is=68c58f8e&hm=d3d3e4010e546f3d1dc481ef9fd18167ae98e510525107d065a9cdfe581425b7&" alt="gif2"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1406028422177882223/1406028452699836488/Screenshot_20250815-183423.png?ex=68c73509&is=68c5e389&hm=acd0128980614f367d6dc829c5e167654f57768ef6d7bd765b098479c6e59089&" alt="img3"></div>
-            <div class="tile"><img src="https://media.tenor.com/-p9tMivMcbIAAAAC/cynthia-erivo.gif" alt="gif4"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1406028422177882223/1409940630284537876/Screenshot_20250826_123929_Status.jpg?ex=68c6f009&is=68c59e89&hm=00eccbc089f5defc0a76fea68db1ed9055bb04966c5f76fab9e6e5bb569002e3&" alt="img5"></div>
-            <div class="tile"><img src="https://media.discordapp.net/attachments/1406028422177882223/1412309471820255283/Screenshot_20250902-023303.png?ex=68c6fc71&is=68c5aaf1&hm=3f5cd5d7d9a67e9deed2282d4abf09f83a960176c46f96bb57dfd323c50bf402&=&format=webp&quality=lossless&width=302&height=670" alt="img6"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1412909908436979914/image.png?ex=68c73164&is=68c5dfe4&hm=4790e54b7e4fb96e0c57d4b8f6292aff4d66a18f19d0970144b36f1123fc92f1&" alt="img7"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1412909909246480536/image.png?ex=68c73164&is=68c5dfe4&hm=71621b27c897e74c04071aebe083cad2514133b68084c63f0dfbfd6930cc4b1a&" alt="img8"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1413010385711403008/Screenshot_20250904-005834.png?ex=68c6e638&is=68c594b8&hm=860302914cd30b706a1fdfd496c9ab99965105beb2d905a7aa92549296ae72ca&" alt="img9"></div>
-            <div class="tile"><img src="https://media.discordapp.net/attachments/1405395296216682529/1413018105092903085/Screenshot_20250904_002849_TikTok.jpg?ex=68c6ed68&is=68c59be8&hm=ebff8052b4993ae8aafa94891f7426b324308f25f270c2a9f2dcf503fba8e9b8&=&format=webp&width=331&height=670" alt="img10"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1413182240770494594/Screenshot_20250904-122111.png?ex=68c6dd85&is=68c58c05&hm=268417f521bd041abde14d05cff75d655c83661633ccd3bc459999fbc5560975&" alt="img11"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1413317156979998900/Screenshot_20250904-211721.png?ex=68c6b26c&is=68c560ec&hm=da20ef47aa456429a65ac36619868c6e09a85934d2278df4710eaf8d1691cc1b&" alt="img12"></div>
-            <div class="tile"><img src="https://cdn.discordapp.com/attachments/1405395296216682529/1413997968960262184/fitness_goals.png?ex=68c7323a&is=68c5e0ba&hm=915a24461c0ba3078924d12d9af70c94e47b18f68098af1b850ff6fd4a9901a8&" alt="img13"></div>
-          </div>` // Gallery tiles now use tokenized Discord URLs + direct Tenor media gif
+          <div class="tile"><img src="assets/images/gallery/A9CAB54D-6C46-47E0-B7D1-1E489A964B88-ezgif.com-video-to-gif-converter.gif" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250814-021832.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250815-152748.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250815-183423.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250826_123929_Status.jpg" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250902-023303.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250904-005834.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250904-122111.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/Screenshot_20250904-191411.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/cynthia-erivo-speechless.mp4" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/cynthia-erivo.mp4" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/danielsmith.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/ethan-slater.mp4" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/fitness_goals.png" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/gasp-speechless.mp4" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/omgcat.mp4" alt=""></div>
+           <div class="tile"><img src="assets/images/gallery/touchstarved.gif" alt=""></div>
+           </div>` // Gallery tiles now use tokenized Discord URLs + direct Tenor media gif
     },
     {
       id: "rules-section",

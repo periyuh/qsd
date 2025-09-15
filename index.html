@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>QueenServeantDonked</title>
+  <title>QSD Archive</title>
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="dark">
   <header class="nav">
     <div class="logo">QSD<span class="dot">.</span></div>
     <nav>
-      <a href="index.html" class="active">Home</a>
+      <a href="index.html" class="active">Archive</a>
       <a href="albums.html">Albums</a>
       <a href="artists.html">Artists</a>
       <a href="trivia.html">Trivia</a>
@@ -23,35 +23,74 @@
   </header>
 
   <main class="layout">
-    <!-- left: album grid -->
-    <section id="album-grid" class="panel">
-      <h2 class="section-title">Albums</h2>
-      <div id="grid" class="grid"></div>
-      <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
+    <!-- Hero / About -->
+    <section class="panel">
+      <h1>Welcome to the QSD Archive</h1>
+      <p>
+        A surreal collection of <strong>albums, tracks, trivia, and lore</strong> from
+        <em>QueenServeantDonked</em>. Explore the chaos, dive into history, and unlock
+        hidden gems.
+      </p>
     </section>
 
-    <!-- right: album detail -->
-    <aside id="album-detail" class="panel detail hidden">
-      <button id="detail-back" class="btn ghost small">◀ Back to albums</button>
-      <div id="detail-inner"></div>
-    </aside>
+    <!-- Gallery -->
+    <section class="panel">
+      <h2>Screenshots & Chaos Artifacts</h2>
+      <div class="gallery" id="home-gallery"></div>
+    </section>
+
+    <!-- Trivia -->
+    <section class="panel">
+      <h2>Random QSD Lore</h2>
+      <div id="random-trivia">Loading...</div>
+    </section>
+
+    <!-- Album Browser -->
+    <section class="panel">
+      <h2>Albums</h2>
+      <div id="album-grid" class="grid"></div>
+      <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
+    </section>
   </main>
 
   <footer class="footer">
-    <p>© 2025 QueenServeantDonked</p>
+    <p>© 2025 QueenServeantDonked — Archive Edition</p>
   </footer>
 
-  <!-- Track modal -->
-  <div id="track-modal" class="modal hidden" aria-hidden="true">
-    <div class="modal-panel">
-      <button id="modal-close" class="btn small">✕</button>
-      <div id="modal-body"></div>
-      <div class="modal-nav">
-        <button id="prev-track" class="btn small">⬅</button>
-        <button id="next-track" class="btn small">➡</button>
-      </div>
-    </div>
-  </div>
+  <script>
+    // Mini gallery reuse from chaos
+    const galleryImgs = [
+      "assets/images/gallery/Screenshot_20250815-152748.png",
+      "assets/images/gallery/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif",
+      "assets/images/gallery/Screenshot_20250815-183423.png",
+      "assets/images/gallery/touchstarved.gif",
+      "assets/images/gallery/fitness_goals.png"
+    ];
+    const galleryContainer = document.getElementById("home-gallery");
+    if (galleryContainer) {
+      galleryImgs.forEach(src => {
+        const tile = document.createElement("div");
+        tile.className = "tile";
+        const img = document.createElement("img");
+        img.src = src;
+        tile.appendChild(img);
+        galleryContainer.appendChild(tile);
+      });
+    }
+
+    // Random trivia (placeholder — replace with JSON if you want)
+    const triviaLines = [
+      "⚡ QSD once dropped an entire album as an April Fools joke.",
+      "🐔 The chicken emoji is a sacred mascot in QSD lore.",
+      "🎵 Every album has at least one mislabelled track.",
+      "👁 QSD is always watching.",
+      "💿 Many songs have multiple remix variants only shared in secret."
+    ];
+    const triviaEl = document.getElementById("random-trivia");
+    if (triviaEl) {
+      triviaEl.textContent = triviaLines[Math.floor(Math.random() * triviaLines.length)];
+    }
+  </script>
 
   <script src="assets/js/script.js" defer></script>
 </body>
