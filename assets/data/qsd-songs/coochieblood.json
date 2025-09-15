@@ -1,11 +1,26 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "coochieblood",
-    "feature": null,
+    "album": "SISSYPUSS",
+    "trackNumber": 5,
+    "title": "coochie blood (it’s on fiyah)",
+    "feature": ["Keynew"],
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "length": "1:30",
+    "bio": "This ambient track features heavily edited vocals layered over atmospheric production. With surreal, distorted delivery, Keynew turns the theme of 'coochie blood' into a bizarre yet hypnotic sonic moment on SISSYPUSS.",
+    "lyrics": [
+        "Ooh, my coochie is on fire",
+        "Ooh, it's on fire!",
+        "",
+        "Ooh, oh Peri, my coochie is on fire",
+        "Cause my coochie's splewing out- spl-gluing?",
+        "Spewing out blood",
+        "Ooh-hoo-ah! My coochie, forever on fire!",
+        "Oh, my coochie is on fire!",
+        "My coochie is spewing out blood, it's spewing out blood",
+        "It's like a Red River, ah, just like a Red River",
+        "River of my coochie blood!",
+        "",
+        "Oh, ooh, my coochie!"
+    ],
+    "coverArt": null,
+    "links": {}
 }

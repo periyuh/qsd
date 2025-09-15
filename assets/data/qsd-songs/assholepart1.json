@@ -1,11 +1,13 @@
 {
-    "album": "psycH ward vibEs for your Long striPes",
-    "trackNumber": 1,
-    "title": "assHOlE part 1",
-    "feature": null,
-    "version": null,
-    "length": "3:05",
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+  "album": "psycH ward vibEs for your Long striPes",
+  "trackNumber": 1,
+  "title": "assHOlE part 1",
+  "feature": null,
+  "version": null,
+  "length": "3:05",
+  "bio": "A strange, experimental beat built from random sounds and irregular drums. Sets a chaotic, uneasy tone for the album’s start.",
+  "lyrics": [
+      "[Instrumental]"
+  ],
+  "coverArt": null
 }

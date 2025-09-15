@@ -1,11 +1,25 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "devils",
+    "album": "heelz",
+    "trackNumber": 2,
+    "title": "Devils",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "length": "2:21",
+    "bio": "Released on January 23, 2022, “Devils” was JinnaWoods’ second recorded track and the first single for his scrapped debut album New York Slutz. It later appeared on the heelz EP, and was eventually repurposed as the opener for EMOtional SLAYage (2023).",
+    "lyrics": [
+        "JinnaWoods arrived to the hell",
+        "",
+        "Devils",
+        "Devils",
+        "Devils",
+        "",
+        "JinnaWoods arrived to the hell",
+        "",
+        "Devils",
+        "Devils",
+        "Devils",
+        "Devils"
+    ],
+    "coverArt": null,
+    "links": {}
 }

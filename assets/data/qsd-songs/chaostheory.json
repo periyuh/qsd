@@ -1,11 +1,13 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "chaostheory",
+    "album": "psycH ward vibEs for your Long striPes",
+    "trackNumber": 5,
+    "title": "chaoS TheORY",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
+    "length": "5:11",
+    "bio": "An instrumental track built around looping frequencies and slowed drums, embodying the chaotic theme of the album.",
+    "lyrics": [
+        "[Instrumental]"
+    ],
     "coverArt": null
 }

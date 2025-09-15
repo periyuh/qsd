@@ -1,11 +1,19 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "furrysounds",
+    "album": ["SISSYPUSS", "Khaki Shorts (EP)"],
+    "trackNumber": [8, 2],
+    "title": "furry sounds (pissin’ & fartin’)",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "length": "2:51",
+    "bio": "“furry sounds (pissin’ & fartin’)” is a chaotic experimental track built around distorted vocalizations like howls, gargles, and burps. Originally appearing as track 2 on the Khaki Shorts EP, it was later also featured as track 8 on SISSYPUSS.",
+    "lyrics": [
+        "Howling",
+        "Gargling",
+        "Burping",
+        "Howling",
+        "Gargling",
+        "Burping"
+    ],
+    "coverArt": null,
+    "links": {}
 }

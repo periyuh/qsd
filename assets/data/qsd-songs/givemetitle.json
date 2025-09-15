@@ -1,11 +1,14 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "givemetitle",
+    "album": "it doesn’t have a title",
+    "trackNumber": 2,
+    "title": "give me a title",
     "feature": null,
     "version": null,
     "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "bio": "“give me a title” is an instrumental track built mainly from FL Studio assets and sounds, it carries a playful self-referential quality in its naming.",
+    "lyrics": [
+        "[Instrumental]"
+    ],
+    "coverArt": null,
+    "links": {}
 }

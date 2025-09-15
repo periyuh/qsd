@@ -1,11 +1,24 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "dourthing",
+    "album": "The Candidates",
+    "trackNumber": 8,
+    "title": "do ur thing",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "length": "2:53",
+    "bio": "“do ur thing” is a playful electronic track featuring spoken and ad-libbed vocals. It blends humor and casual energy, adding a lighthearted moment to the album.",
+    "lyrics": [
+        "I'm glad I got home just for this",
+        "Hey fat bitches, um, this is for the album",
+        "For April Fools album, for my bestie boo",
+        "Um, Zac is really fat and ugly",
+        "Put that on there, do your thing!",
+        "",
+        "Do your thing",
+        "Zac is really fat and ugly",
+        "Do your thing",
+        "Zac is really fat and ugly",
+        "Do your thing"
+    ],
+    "coverArt": null,
+    "links": {}
 }

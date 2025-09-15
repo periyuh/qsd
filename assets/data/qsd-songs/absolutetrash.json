@@ -1,10 +1,13 @@
 {
-    "album": "psycH ward vibEs for your Long striPes",
-    "trackNumber": 7,
-    "title": "AbSolute traSh",
-    "feature": null,
-    "version": null,
-    "length": "2:47",
-    "bio": null,
-    "lyrics": null
+  "album": "psycH ward vibEs for your Long striPes",
+  "trackNumber": 7,
+  "title": "AbSolute traSh",
+  "feature": null,
+  "version": null,
+  "length": "2:47",
+  "bio": "Percussion-heavy instrumental that layers pounding electronic drums into a raw, industrial rhythm.",
+  "lyrics": [
+        "[Instrumental]"
+    ],
+  "coverArt": null
 }

@@ -1,11 +1,14 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "dbsp",
+    "album": "The Candidates",
+    "trackNumber": 9,
+    "title": "D.B.S.P",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "length": "0:45",
+    "bio": "Standing for 'Don’t Be Shy Prelude,' this short instrumental interlude sets the stage for the following track. Built with periyuh’s production, it acts as a transitional piece within The Candidates.",
+    "lyrics": [
+        "[Instrumental]"
+    ],
+    "coverArt": null,
+    "links": {}
 }

@@ -1,11 +1,14 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "fartnqueef",
-    "feature": null,
-    "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+  "album": "SISSYPUSS",
+  "trackNumber": 2,
+  "title": "FART & QUEEF",
+  "feature": null,
+  "version": "album version",
+  "length": "4:09",
+  "bio": "Second track on SISSYPUSS, 'FART & QUEEF' is a fully instrumental piece produced by periyuh. Despite its provocative title, the track contains no lyrics and instead leans into chaotic, humorous sound design as part of the album’s absurdist aesthetic.",
+  "lyrics": [
+      "[Instrumental]"
+  ],
+  "coverArt": null,
+  "links": {}
 }

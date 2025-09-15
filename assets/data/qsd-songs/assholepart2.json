@@ -1,11 +1,13 @@
 {
-    "album": "psycH ward vibEs for your Long striPes",
-    "trackNumber": 12,
-    "title": "assholepart2",
-    "feature": null,
-    "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+  "album": "psycH ward vibEs for your Long striPes",
+  "trackNumber": 12,
+  "title": "aSshoLE ParT 2",
+  "feature": null,
+  "version": null,
+  "length": "3:05",
+  "bio": "A restructured variation of the first part, leaning more on percussive elements and a shifting, unpredictable groove.",
+  "lyrics": [
+      "[Instrumental]"
+  ],
+  "coverArt": null
 }

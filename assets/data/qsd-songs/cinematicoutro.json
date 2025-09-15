@@ -1,11 +1,13 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "cinematicoutro",
+    "album": "The Candidates",
+    "trackNumber": 12,
+    "title": "CINEMATIC OUTRO",
     "feature": null,
     "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
+    "length": "1:43",
+    "bio": "An instrumental orchestral outro track that closes out the deluxe edition of *The Candidates* with a cinematic feel.",
+    "lyrics": [
+        "[Instrumental]"
+    ],
     "coverArt": null
 }
