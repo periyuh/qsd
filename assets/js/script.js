@@ -13,8 +13,13 @@ const ALBUM_FILES = [
   'qsd-khakishorts.json'
 ];
 
-// little easter egg
-console.log('%cQSD REBORN — look in the corners, little secrets hide ✨','color:#ff2ea6;font-weight:700');
+function logEgg() {
+  console.log(
+    '%cQSD REBORN — look in the corners, little secrets hide ✨',
+    'color:#ff2ea6;font-weight:700'
+  );
+}
+logEgg();
 
 async function fetchJSON(path) {
   try {
@@ -27,28 +32,7 @@ async function fetchJSON(path) {
   }
 }
 
-// quick HEAD check if audio file exists
-async function audioExists(path) {
-  try {
-    const r = await fetch(path, { method: 'HEAD' });
-    return r.ok;
-  } catch {
-    return false;
-  }
-}
-
-// bot-like formatting
-function formatTrackLine(track, index) {
-  let line = `${index + 1}. ${track.title || 'Untitled'}`;
-  if (track.feature) {
-    const feat = Array.isArray(track.feature) ? track.feature.join(', ') : track.feature;
-    line += ` (feat. ${feat})`;
-  }
-  if (track.version) line += ` — ${track.version}`;
-  return line;
-}
-
-/* ----- UI references ----- */
+/* ----- UI elements ----- */
 const gridEl = document.getElementById('grid');
 const emptyEl = document.getElementById('empty');
 const detailEl = document.getElementById('album-detail');
@@ -67,7 +51,7 @@ let currentTrackIndex = 0;
 
 /* ----- Albums grid ----- */
 async function loadAlbums() {
-  if (!gridEl) return; // only run on pages with #grid
+  if (!gridEl) return;
   gridEl.innerHTML = '';
   const searchInput = document.getElementById('search');
 
@@ -77,7 +61,7 @@ async function loadAlbums() {
     if (!album) continue;
     any = true;
 
-    const safeName = file.replace('.json','').replace(/^qsd\d?-/, '');
+    const safeName = file.replace('.json', '').replace(/^qsd\d?-/, '');
     const localCover = `assets/images/albumcovers/${safeName}.jpg`;
 
     const card = document.createElement('div');
@@ -88,7 +72,9 @@ async function loadAlbums() {
     img.className = 'cover';
     img.src = localCover;
     img.alt = album.title;
-    img.onerror = () => { img.src = album.coverArt || 'assets/images/albumcovers/thecandidates.jpg'; };
+    img.onerror = () => {
+      img.src = album.coverArt || 'assets/images/albumcovers/thecandidates.jpg';
+    };
     card.appendChild(img);
 
     const meta = document.createElement('div');
@@ -105,10 +91,9 @@ async function loadAlbums() {
 
   emptyEl && (emptyEl.style.display = any ? 'none' : 'block');
 
-  // search
   searchInput?.addEventListener('input', (e) => {
     const q = e.target.value.toLowerCase().trim();
-    Array.from(gridEl.children).forEach(card => {
+    Array.from(gridEl.children).forEach((card) => {
       const txt = card.textContent.toLowerCase();
       card.style.display = txt.includes(q) ? '' : 'none';
     });
@@ -117,13 +102,13 @@ async function loadAlbums() {
 
 /* ----- Album detail ----- */
 async function showAlbum(albumFile, albumData = null) {
-  const album = albumData || await fetchJSON(`${DATA_DIR}/${albumFile}`);
+  const album = albumData || (await fetchJSON(`${DATA_DIR}/${albumFile}`));
   if (!album || !detailEl) return;
 
   currentAlbum = { file: albumFile, ...album };
   detailEl.classList.remove('hidden');
 
-  const safeName = albumFile.replace('.json','').replace(/^qsd\d?-/, '');
+  const safeName = albumFile.replace('.json', '').replace(/^qsd\d?-/, '');
   const localCover = `assets/images/albumcovers/${safeName}.jpg`;
 
   detailInner.innerHTML = `
@@ -146,12 +131,16 @@ async function showAlbum(albumFile, albumData = null) {
 
   const linksEl = detailInner.querySelector('.links');
   linksEl.innerHTML = album.links
-    ? Object.entries(album.links).map(([p,u]) => `<a href="${u}" target="_blank">${p}</a>`).join(' • ')
+    ? Object.entries(album.links)
+        .map(([p, u]) => `<a href="${u}" target="_blank">${p}</a>`)
+        .join(' • ')
     : '<span class="muted tiny">No streaming links</span>';
 
   const buyEl = document.getElementById('buy-links');
   buyEl.innerHTML = album.buy
-    ? Object.entries(album.buy).map(([p,u]) => `<a href="${u}" target="_blank">${p}</a>`).join(' • ')
+    ? Object.entries(album.buy)
+        .map(([p, u]) => `<a href="${u}" target="_blank">${p}</a>`)
+        .join(' • ')
     : '<span class="muted tiny">No purchase links</span>';
 
   const tracklistEl = document.getElementById('tracklist');
@@ -174,7 +163,7 @@ async function showAlbum(albumFile, albumData = null) {
       const li = document.createElement('li');
       li.className = 'track-item';
       li.dataset.index = idx;
-      li.innerHTML = `<span>${formatTrackLine(t, idx)}</span><small class="muted">${t.length || ''}</small>`;
+      li.innerHTML = `<span>${idx + 1}. ${t.title || 'Untitled'}</span>`;
       li.addEventListener('click', () => openTrackModal(idx));
       tracklistEl.appendChild(li);
     });
@@ -191,8 +180,8 @@ async function openTrackModal(index) {
   await renderTrack(currentTrackIndex);
   if (modal) {
     modal.classList.add('show');
-    modal.style.display = 'flex'; // flex for centering
-    modal.setAttribute('aria-hidden','false');
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
   }
   document.body.style.overflow = 'hidden';
 }
@@ -200,10 +189,10 @@ async function openTrackModal(index) {
 function closeModal() {
   if (modal) {
     modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
+    modal.setAttribute('aria-hidden', 'true');
     setTimeout(() => {
       modal.style.display = 'none';
-    }, 300); // match fade-out duration
+    }, 300);
   }
   document.body.style.overflow = '';
 }
@@ -211,17 +200,15 @@ function closeModal() {
 async function renderTrack(index) {
   const t = currentTracks[index];
   if (!t) return;
-
-  const base = t.filename.replace('.json','');
-  const candidateOpus = `${AUDIO_DIR}/${base}.opus`;
-
-  let audioSrc = null;
-  if (await audioExists(candidateOpus)) audioSrc = candidateOpus;
+  const base = t.filename.replace('.json', '');
+  const audioSrc = `${AUDIO_DIR}/${base}.opus`;
 
   modalBody.innerHTML = `
-    <h3>${t.title}${t.version ? ' — '+t.version : ''}</h3>
-    <p class="muted tiny">Featuring: ${t.feature ? (Array.isArray(t.feature) ? t.feature.join(', ') : t.feature) : '—'}</p>
-    <p class="muted tiny">Length: ${t.length || '—'}</p>
+    <h3>${t.title}${t.version ? ' — ' + t.version : ''}</h3>
+    <p class="muted tiny">
+      ${t.feature ? `feat. ${Array.isArray(t.feature) ? t.feature.join(', ') : t.feature}` : ''}
+      ${t.length ? ` • ${t.length}` : ''}
+    </p>
     <div style="display:flex;gap:12px;align-items:flex-start;margin-top:8px">
       ${t.coverArt ? `<img src="${t.coverArt}" style="width:132px;height:132px;object-fit:cover;border-radius:8px">` : ''}
       <div>
@@ -232,14 +219,12 @@ async function renderTrack(index) {
   `;
 
   const audioWrap = document.getElementById('audio-wrap');
-  audioWrap.innerHTML = audioSrc
-    ? `<audio controls preload="none" style="width:100%">
-         <source src="${audioSrc}" type="audio/ogg; codecs=opus">
-       </audio>`
-    : `<div class="muted tiny">Audio file not found.</div>`;
+  audioWrap.innerHTML = `<audio controls preload="none" style="width:100%">
+    <source src="${audioSrc}" type="audio/ogg">
+  </audio>`;
 }
 
-/* ----- Navigation & modal controls ----- */
+/* ----- Controls ----- */
 detailBack?.addEventListener('click', () => {
   detailEl?.classList.add('hidden');
   document.getElementById('album-grid')?.classList.remove('hidden');
@@ -256,7 +241,7 @@ nextBtn?.addEventListener('click', async () => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (!modal || modal.getAttribute('aria-hidden') === 'true') return;
+  if (modal?.classList.contains('hidden')) return;
   if (e.key === 'Escape') closeModal();
   if (e.key === 'ArrowLeft') prevBtn?.click();
   if (e.key === 'ArrowRight') nextBtn?.click();

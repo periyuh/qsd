@@ -2,10 +2,10 @@
     "album": "The Candidates",
     "trackNumber": 1,
     "title": "APRIL FOOLS!",
-    "feature": "Cameron Reid, NEWFM.666 & vividusbae",
+    "feature": ["Cameron Reid", "NEWFM.666", "vividusbae"],
     "version": null,
     "length": "2:41",
-    "bio": null,
+    "bio": "“APRIL FOOLS!” celebrates the chaos and fun of April Fool’s Day. QueenServeantDonked and collaborators wanted to capture the spirit of pranks, satire, and playful music experiments. The track began as an idea to sound like a messy choir of voices, reflecting the unpredictable nature of the day. It reminds listeners that on April 1st, anything is possible — from jokes on social media to surprise album drops.",
     "lyrics": [
         "It's April Fools, my queens",
         "The best day of the year",
@@ -58,5 +58,8 @@
         "The joke's on us, unstoppable",
         "In April Fools, anything is possible"
     ],
-    "coverArt": ""
-  }  
+    "coverArt": "",
+    "links": {
+        "spotify": "https://open.spotify.com/track/6rF0xtzz48PtK9NlAOQQEv?si=a2fdad1b31644df6"
+    }
+}
