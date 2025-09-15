@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="dark">
+  <!-- Navigation -->
   <header class="nav">
     <div class="logo">QSD<span class="dot">.</span></div>
     <nav>
@@ -17,37 +18,28 @@
       <a href="links.html">Links</a>
       <a href="chaos.html" class="chaos-link">Chaos</a>
     </nav>
-    <div class="search-wrap">
-      <input id="search" placeholder="search albums or tracks..." />
-    </div>
   </header>
 
   <main class="layout">
-    <!-- Hero / About -->
-    <section class="panel">
+    <!-- Hero -->
+    <section class="panel hero">
       <h1>Welcome to the QSD Archive</h1>
       <p>
         A surreal collection of <strong>albums, tracks, trivia, and lore</strong> from
-        <em>QueenServeantDonked</em>. Explore the chaos, dive into history, and unlock
-        hidden gems.
+        <em>QueenServeantDonked</em>.  
+        Browse the discography, uncover hidden chaos, and explore the universe.
       </p>
-    </section>
-
-    <!-- Gallery -->
-    <section class="panel">
-      <h2>Screenshots & Chaos Artifacts</h2>
-      <div class="gallery" id="home-gallery"></div>
     </section>
 
     <!-- Trivia -->
     <section class="panel">
-      <h2>Random QSD Lore</h2>
-      <div id="random-trivia">Loading...</div>
+      <h2>Random Lore</h2>
+      <div id="random-trivia" class="trivia-box">Loading...</div>
     </section>
 
-    <!-- Album Browser -->
+    <!-- Albums -->
     <section class="panel">
-      <h2>Albums</h2>
+      <h2>Discography</h2>
       <div id="album-grid" class="grid"></div>
       <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
     </section>
@@ -57,41 +49,22 @@
     <p>© 2025 QueenServeantDonked — Archive Edition</p>
   </footer>
 
+  <!-- Trivia Script -->
   <script>
-    // Mini gallery reuse from chaos
-    const galleryImgs = [
-      "assets/images/gallery/Screenshot_20250815-152748.png",
-      "assets/images/gallery/ScreenRecording_04-29-202511-29-58_1-ezgif.com-optimize.gif",
-      "assets/images/gallery/Screenshot_20250815-183423.png",
-      "assets/images/gallery/touchstarved.gif",
-      "assets/images/gallery/fitness_goals.png"
-    ];
-    const galleryContainer = document.getElementById("home-gallery");
-    if (galleryContainer) {
-      galleryImgs.forEach(src => {
-        const tile = document.createElement("div");
-        tile.className = "tile";
-        const img = document.createElement("img");
-        img.src = src;
-        tile.appendChild(img);
-        galleryContainer.appendChild(tile);
-      });
-    }
-
-    // Random trivia (placeholder — replace with JSON if you want)
     const triviaLines = [
       "⚡ QSD once dropped an entire album as an April Fools joke.",
       "🐔 The chicken emoji is a sacred mascot in QSD lore.",
       "🎵 Every album has at least one mislabelled track.",
       "👁 QSD is always watching.",
-      "💿 Many songs have multiple remix variants only shared in secret."
+      "💿 Many songs exist only as remixes shared in secret.",
+      "🔥 Albums are often released without warning, pure chaos.",
+      "🎭 Collaborations appear and vanish unpredictably."
     ];
     const triviaEl = document.getElementById("random-trivia");
-    if (triviaEl) {
-      triviaEl.textContent = triviaLines[Math.floor(Math.random() * triviaLines.length)];
-    }
+    triviaEl.textContent = triviaLines[Math.floor(Math.random() * triviaLines.length)];
   </script>
 
+  <!-- Album loader -->
   <script src="assets/js/script.js" defer></script>
 </body>
 </html>
