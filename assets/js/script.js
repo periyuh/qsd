@@ -189,8 +189,11 @@ async function showAlbum(albumFile, albumData = null) {
 async function openTrackModal(index) {
   currentTrackIndex = index;
   await renderTrack(currentTrackIndex);
-  modal?.classList.remove('hidden');
-  modal?.setAttribute('aria-hidden','false');
+  if (modal) {
+    modal.classList.remove('hidden');
+    modal.style.display = 'block';   // <-- force visible only here
+    modal.setAttribute('aria-hidden','false');
+  }
   document.body.style.overflow = 'hidden';
 }
 
@@ -241,8 +244,11 @@ nextBtn?.addEventListener('click', async () => {
 });
 
 function closeModal() {
-  modal?.classList.add('hidden');
-  modal?.setAttribute('aria-hidden','true');
+  if (modal) {
+    modal.classList.add('hidden');
+    modal.style.display = 'none';    // <-- completely hides again
+    modal.setAttribute('aria-hidden','true');
+  }
   document.body.style.overflow = '';
 }
 
