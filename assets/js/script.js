@@ -1,8 +1,4 @@
-/* script.js — QSD albums & tracks (client-side)
-   - expects album JSONs in: assets/data/<qsdX-...>.json
-   - track JSONs in: assets/data/qsd-songs/<trackfile>.json
-   - audio files in: assets/audio/<basename>.opus  (falls back to .mp3)
-*/
+/* script.js — QSD albums & tracks (client-side) */
 
 const DATA_DIR = 'assets/data';
 const SONGS_DIR = `${DATA_DIR}/qsd-songs`;
@@ -71,6 +67,7 @@ let currentTrackIndex = 0;
 
 /* ----- Albums grid ----- */
 async function loadAlbums() {
+  if (!gridEl) return; // safe guard: run only on pages with a grid
   gridEl.innerHTML = '';
   const searchInput = document.getElementById('search');
 
@@ -80,7 +77,6 @@ async function loadAlbums() {
     if (!album) continue;
     any = true;
 
-    // Guess local cover (matches your assets/images/albumcovers/*.jpg)
     const safeName = file.replace('.json','').replace(/^qsd\d?-/, '');
     const localCover = `assets/images/albumcovers/${safeName}.jpg`;
 
@@ -107,7 +103,7 @@ async function loadAlbums() {
     gridEl.appendChild(card);
   }
 
-  emptyEl.style.display = any ? 'none' : 'block';
+  emptyEl && (emptyEl.style.display = any ? 'none' : 'block');
 
   // search
   searchInput?.addEventListener('input', (e) => {
@@ -122,7 +118,7 @@ async function loadAlbums() {
 /* ----- Album detail ----- */
 async function showAlbum(albumFile, albumData = null) {
   const album = albumData || await fetchJSON(`${DATA_DIR}/${albumFile}`);
-  if (!album) return alert('Could not load album');
+  if (!album || !detailEl) return;
 
   currentAlbum = { file: albumFile, ...album };
   detailEl.classList.remove('hidden');
@@ -148,7 +144,6 @@ async function showAlbum(albumFile, albumData = null) {
     <div id="buy-links" class="links"></div>
   `;
 
-  // links
   const linksEl = detailInner.querySelector('.links');
   linksEl.innerHTML = album.links
     ? Object.entries(album.links).map(([p,u]) => `<a href="${u}" target="_blank">${p}</a>`).join(' • ')
@@ -159,7 +154,6 @@ async function showAlbum(albumFile, albumData = null) {
     ? Object.entries(album.buy).map(([p,u]) => `<a href="${u}" target="_blank">${p}</a>`).join(' • ')
     : '<span class="muted tiny">No purchase links</span>';
 
-  // tracks
   const tracklistEl = document.getElementById('tracklist');
   tracklistEl.innerHTML = '<li class="muted tiny">Loading tracks…</li>';
 
@@ -187,7 +181,7 @@ async function showAlbum(albumFile, albumData = null) {
   }
 
   if (window.innerWidth < 900) {
-    document.getElementById('album-grid').classList.add('hidden');
+    document.getElementById('album-grid')?.classList.add('hidden');
   }
 }
 
@@ -195,8 +189,8 @@ async function showAlbum(albumFile, albumData = null) {
 async function openTrackModal(index) {
   currentTrackIndex = index;
   await renderTrack(currentTrackIndex);
-  modal.classList.remove('hidden');
-  modal.setAttribute('aria-hidden','false');
+  modal?.classList.remove('hidden');
+  modal?.setAttribute('aria-hidden','false');
   document.body.style.overflow = 'hidden';
 }
 
@@ -232,8 +226,8 @@ async function renderTrack(index) {
 
 /* ----- Navigation & modal controls ----- */
 detailBack?.addEventListener('click', () => {
-  detailEl.classList.add('hidden');
-  document.getElementById('album-grid').classList.remove('hidden');
+  detailEl?.classList.add('hidden');
+  document.getElementById('album-grid')?.classList.remove('hidden');
 });
 
 modalClose?.addEventListener('click', closeModal);
@@ -247,13 +241,13 @@ nextBtn?.addEventListener('click', async () => {
 });
 
 function closeModal() {
-  modal.classList.add('hidden');
-  modal.setAttribute('aria-hidden','true');
+  modal?.classList.add('hidden');
+  modal?.setAttribute('aria-hidden','true');
   document.body.style.overflow = '';
 }
 
 document.addEventListener('keydown', (e) => {
-  if (modal.classList.contains('hidden')) return;
+  if (modal?.classList.contains('hidden')) return;
   if (e.key === 'Escape') closeModal();
   if (e.key === 'ArrowLeft') prevBtn?.click();
   if (e.key === 'ArrowRight') nextBtn?.click();
