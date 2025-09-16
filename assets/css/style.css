@@ -1,69 +1,136 @@
-/* Compact adjustments for QSD Archive */
+/* === Refined QSD Archive Styles === */
 
-/* Carousel */
+/* Layout baseline */
+.layout {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Panels */
+.panel {
+  margin: 24px 0;
+  padding: 16px 20px;
+  background: #16161d;
+  border-radius: 10px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* Section titles */
+.section-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid #2a2a35;
+}
+
+/* === Carousels (Spotify style) === */
+.carousel {
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 8px 2px;
+  scrollbar-width: none;
+}
+.carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
 .carousel-card {
-  flex: 0 0 140px;        /* smaller cards */
-  padding: 8px;
+  flex: 0 0 120px;       /* tighter size */
+  text-align: center;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 .carousel-card img {
-  height: 140px;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+.carousel-card:hover {
+  transform: scale(1.05);
 }
 .carousel-card .meta {
   margin-top: 6px;
   font-size: 0.85rem;
+  color: #ccc;
 }
 
-/* Album detail */
-.cover-large {
-  width: 150px;
-  height: 150px;
-}
-.album-detail-header {
-  gap: 16px;
-}
-.album-text p {
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-/* Tracklist (Apple Music style) */
+/* === Tracklist (Apple Music style) === */
 .tracklist {
+  list-style: none;
   margin-top: 8px;
 }
 .track-item {
-  padding: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 0;
   font-size: 0.9rem;
+  border-bottom: 1px solid #2a2a35;
+  cursor: pointer;
 }
 .track-item span {
-  display: inline-block;
-  min-width: 24px;
   color: #777;
+  font-size: 0.8rem;
 }
 .track-item:hover {
   color: #ff2ea6;
 }
 
-/* Modal */
+/* === Album Detail === */
+.album-detail-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.cover-large {
+  width: 140px;
+  height: 140px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* === Modal === */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+.modal.show {
+  display: flex;
+}
 .modal-panel {
-  max-width: 440px;       /* slimmer */
-  padding: 16px;
+  background: #1b1b22;
+  padding: 18px;
+  border-radius: 10px;
+  max-width: 480px;
+  width: 90%;
+  animation: fadeIn 0.25s ease;
 }
 .modal-panel h3 {
   font-size: 1.1rem;
 }
 .modal-panel p {
-  font-size: 0.9rem;
-  margin: 6px 0;
+  font-size: 0.85rem;
+  margin: 4px 0;
 }
-.modal-nav {
-  margin-top: 10px;
-}
-.btn.small {
-  font-size: 0.75rem;
-  padding: 3px 6px;
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Global player (bottom bar) */
+/* === Player (bottom bar) === */
 #global-player {
   position: fixed;
   bottom: 0;
@@ -71,11 +138,10 @@
   right: 0;
   background: #111;
   border-top: 1px solid #333;
-  padding: 6px 10px;
+  padding: 8px 12px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 10px;
+  gap: 12px;
   z-index: 998;
 }
 #global-player audio {
