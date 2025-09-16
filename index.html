@@ -7,35 +7,53 @@
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body class="dark">
-  <!-- Navigation -->
   <header class="nav">
-    <div class="logo">QSD<span class="dot">.</span></div>
+    <div class="logo-left">QueenServeantDonked</div>
+    <div class="logo-right">
+      <img src="assets/images/QSD.png" alt="QSD logo" class="logo-img">
+    </div>
     <nav>
-      <a href="index.html" class="active">Archive</a>
+      <a href="index.html" class="active">Home</a>
       <a href="albums.html">Albums</a>
       <a href="artists.html">Artists</a>
-      <a href="chaos.html" class="chaos-link">Chaos</a>
+      <a href="chaos.html">Chaos</a>
     </nav>
   </header>
 
   <main class="layout">
-    <!-- Hero -->
+    <!-- Banner -->
     <section class="panel hero">
+      <img src="assets/images/QSD CRSV BIG.png" alt="QSD banner" class="banner">
       <h1>Welcome to the QSD Archive</h1>
-      <p>
-        A surreal collection of <strong>albums, tracks, and lore</strong> from
-        <em>QueenServeantDonked</em>.  
-        Browse the discography, uncover hidden chaos, and explore the universe.
-      </p>
+      <p>A surreal collection of <strong>albums, tracks, artists, and lore</strong> from <em>QueenServeantDonked</em>.</p>
     </section>
 
-    <!-- Albums -->
+    <!-- Search -->
     <section class="panel">
-      <h2>Discography</h2>
-      <div id="album-grid">
-        <div id="grid" class="grid"></div>
-        <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
+      <div class="search-wrap">
+        <input id="search" placeholder="Search albums, tracks, or artists..." />
       </div>
+    </section>
+
+    <!-- Browser -->
+    <section class="panel">
+      <h2>Albums</h2>
+      <div id="album-carousel" class="carousel"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Top Tracks</h2>
+      <ul id="top-tracks" class="top-tracks"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Artists</h2>
+      <div id="artist-carousel" class="carousel"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Other Notable Albums</h2>
+      <div id="extra-carousel" class="carousel"></div>
     </section>
   </main>
 
@@ -43,7 +61,26 @@
     <p>© 2025 QueenServeantDonked — Archive Edition</p>
   </footer>
 
-  <!-- Album loader -->
-  <script src="assets/js/script.js" defer></script>
+  <!-- Scripts -->
+  <script src="assets/js/browser.js" defer></script>
+  <script src="assets/js/modal.js" defer></script>
+  <script src="assets/js/player.js" defer></script>
+
+  <!-- Track modal -->
+<div id="track-modal" class="modal hidden" aria-hidden="true" style="display:none">
+  <div class="modal-panel">
+    <button id="modal-close" class="btn small">✕</button>
+    <div id="modal-body"></div>
+    <div class="modal-nav">
+      <button id="prev-track" class="btn small">⬅</button>
+      <button id="next-track" class="btn small">➡</button>
+    </div>
+  </div>
+</div>
+
+<!-- Global player bar (injected by player.js) -->
+<script type="module" src="assets/js/modal.js" defer></script>
+<script type="module" src="assets/js/player.js" defer></script>
+
 </body>
 </html>

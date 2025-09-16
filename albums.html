@@ -8,47 +8,45 @@
 </head>
 <body class="dark">
   <header class="nav">
-    <div class="logo">QSD<span class="dot">.</span></div>
+    <div class="logo-left">QueenServeantDonked</div>
     <nav>
       <a href="index.html">Home</a>
       <a href="albums.html" class="active">Albums</a>
       <a href="artists.html">Artists</a>
-      <a href="chaos.html" class="chaos-link">Chaos</a>
+      <a href="chaos.html">Chaos</a>
     </nav>
-    <div class="search-wrap">
-      <input id="search" placeholder="search albums or tracks..." />
-    </div>
   </header>
 
   <main class="layout">
-    <section id="album-grid" class="panel">
-      <h2 class="section-title">Albums</h2>
-      <div id="grid" class="carousel"></div>
-      <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
+    <section class="panel">
+      <h2>Albums</h2>
+      <div id="album-carousel" class="carousel large"></div>
     </section>
-
-    <aside id="album-detail" class="panel detail hidden">
-      <button id="detail-back" class="btn ghost small">◀ Back to albums</button>
-      <div id="detail-inner"></div>
-    </aside>
   </main>
 
   <footer class="footer">
     <p>© 2025 QueenServeantDonked</p>
   </footer>
 
+  <script src="assets/js/browser.js" defer></script>
+  <script src="assets/js/modal.js" defer></script>
+  <script src="assets/js/player.js" defer></script>
+
   <!-- Track modal -->
-  <div id="track-modal" class="modal hidden" aria-hidden="true" style="display:none">
-    <div class="modal-panel">
-      <button id="modal-close" class="btn small">✕</button>
-      <div id="modal-body"></div>
-      <div class="modal-nav">
-        <button id="prev-track" class="btn small">⬅</button>
-        <button id="next-track" class="btn small">➡</button>
-      </div>
+<div id="track-modal" class="modal hidden" aria-hidden="true" style="display:none">
+  <div class="modal-panel">
+    <button id="modal-close" class="btn small">✕</button>
+    <div id="modal-body"></div>
+    <div class="modal-nav">
+      <button id="prev-track" class="btn small">⬅</button>
+      <button id="next-track" class="btn small">➡</button>
     </div>
   </div>
+</div>
 
-  <script src="assets/js/script.js" defer></script>
+<!-- Global player bar (injected by player.js) -->
+<script type="module" src="assets/js/modal.js" defer></script>
+<script type="module" src="assets/js/player.js" defer></script>
+
 </body>
 </html>

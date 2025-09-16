@@ -1,0 +1,20 @@
+{
+  "title": "The Iconic Pop",
+  "artist": ["JinnaWoods", "QueenServeantDonked"],
+  "releaseDate": "March 14, 2025",
+  "description": "A collaborative project where JinnaWoods and QSD blur the line between parody, chaos, and serious pop reinvention. Featuring reworks of Jinna’s early songs alongside fresh collabs.",
+  "coverArt": "assets/images/albumcovers/iconicpop.jpg",
+  "tracklist": [
+    "hollywoodstarz.json",
+    "devilsremix.json",
+    "heelzremix.json",
+    "confused.json",
+    "betterthanme.json",
+    "turnoffthelight.json",
+    "icon.json",
+    "evil.json",
+    "confusedremix.json"
+  ],
+  "links": {},
+  "buy": {}
+}

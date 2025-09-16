@@ -1,0 +1,16 @@
+{
+  "title": "QueenServeantDonked",
+  "tagline": "A surreal archive of chaos, lore, and sound.",
+  "bio": "QueenServeantDonked (QSD) is an experimental collective project that thrives on chaos, satire, and boundless creativity. Known for unpredictable drops, mislabelled tracks, and an ever-expanding universe of lore, QSD blurs the lines between parody and genuine artistry.",
+  "logos": {
+    "main": "assets/images/QSD.png",
+    "centered": "assets/images/QSD CENTERED.png",
+    "banner": "assets/images/QSD CRSV BIG.png"
+  },
+  "timeline": [
+    { "year": 2022, "event": "First recording sessions begin, including tracks that would later form *heelz*." },
+    { "year": 2023, "event": "QSD drops *EMOtional SLAYage* and *it doesn’t have a title*." },
+    { "year": 2024, "event": "*SISSYPUSS* and *The Candidates* introduce deeper interconnected lore." },
+    { "year": 2025, "event": "*psycH ward vibEs for your Long striPes* and *khaki shorts* expand the QSD multiverse." }
+  ]
+}

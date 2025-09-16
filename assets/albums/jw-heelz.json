@@ -1,0 +1,16 @@
+{
+  "title": "Heelz",
+  "artist": "JinnaWoods",
+  "releaseDate": "January 2022",
+  "description": "The debut EP from JinnaWoods, blending underground pop with edgy, chaotic energy. Its raw delivery and genre-bending production earned Jinna their first cult following.",
+  "coverArt": "assets/images/albumcovers/heelz.jpg",
+  "tracklist": [
+    "newyorkslutz.json",
+    "devils.json",
+    "heelz.json",
+    "trueicon.json",
+    "itstrueevil.json"
+  ],
+  "links": {},
+  "buy": {}
+}
