@@ -14,8 +14,6 @@
       <a href="index.html" class="active">Archive</a>
       <a href="albums.html">Albums</a>
       <a href="artists.html">Artists</a>
-      <a href="trivia.html">Trivia</a>
-      <a href="links.html">Links</a>
       <a href="chaos.html" class="chaos-link">Chaos</a>
     </nav>
   </header>
@@ -25,16 +23,10 @@
     <section class="panel hero">
       <h1>Welcome to the QSD Archive</h1>
       <p>
-        A surreal collection of <strong>albums, tracks, trivia, and lore</strong> from
+        A surreal collection of <strong>albums, tracks, and lore</strong> from
         <em>QueenServeantDonked</em>.  
         Browse the discography, uncover hidden chaos, and explore the universe.
       </p>
-    </section>
-
-    <!-- Trivia -->
-    <section class="panel">
-      <h2>Random Lore</h2>
-      <div id="random-trivia" class="trivia-box">Loading...</div>
     </section>
 
     <!-- Albums -->
@@ -50,21 +42,6 @@
   <footer class="footer">
     <p>© 2025 QueenServeantDonked — Archive Edition</p>
   </footer>
-
-  <!-- Trivia Script -->
-  <script>
-    const triviaLines = [
-      "⚡ QSD once dropped an entire album as an April Fools joke.",
-      "🐔 The chicken emoji is a sacred mascot in QSD lore.",
-      "🎵 Every album has at least one mislabelled track.",
-      "👁 QSD is always watching.",
-      "💿 Many songs exist only as remixes shared in secret.",
-      "🔥 Albums are often released without warning, pure chaos.",
-      "🎭 Collaborations appear and vanish unpredictably."
-    ];
-    const triviaEl = document.getElementById("random-trivia");
-    triviaEl.textContent = triviaLines[Math.floor(Math.random() * triviaLines.length)];
-  </script>
 
   <!-- Album loader -->
   <script src="assets/js/script.js" defer></script>

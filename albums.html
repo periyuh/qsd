@@ -13,20 +13,18 @@
       <a href="index.html">Home</a>
       <a href="albums.html" class="active">Albums</a>
       <a href="artists.html">Artists</a>
-      <a href="trivia.html">Trivia</a>
-      <a href="links.html">Links</a>
       <a href="chaos.html" class="chaos-link">Chaos</a>
     </nav>
+    <div class="search-wrap">
+      <input id="search" placeholder="search albums or tracks..." />
+    </div>
   </header>
 
   <main class="layout">
-    <section class="panel">
+    <section id="album-grid" class="panel">
       <h2 class="section-title">Albums</h2>
-      <div id="albums-carousel" class="carousel">
-        <button class="carousel-prev">◀</button>
-        <div class="carousel-track"></div>
-        <button class="carousel-next">▶</button>
-      </div>
+      <div id="grid" class="carousel"></div>
+      <div id="empty" class="muted tiny" style="display:none">No albums found.</div>
     </section>
 
     <aside id="album-detail" class="panel detail hidden">
@@ -40,7 +38,7 @@
   </footer>
 
   <!-- Track modal -->
-  <div id="track-modal" class="modal hidden" aria-hidden="true">
+  <div id="track-modal" class="modal hidden" aria-hidden="true" style="display:none">
     <div class="modal-panel">
       <button id="modal-close" class="btn small">✕</button>
       <div id="modal-body"></div>

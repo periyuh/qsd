@@ -1,22 +1,24 @@
-/* script.js — QSD Archive: albums, tracks, artists with carousel + lyrics modal */
+/* script.js — QSD Archive (albums, artists, tracks) */
 
-const DATA_DIR = "assets/data";
+const DATA_DIR = 'assets/data';
 const SONGS_DIR = `${DATA_DIR}/qsd-songs`;
-const AUDIO_DIR = "assets/audio";
+const ARTISTS_DIR = 'assets/artists';
+const AUDIO_DIR = 'assets/audio';
 
+/* Album list in display order */
 const ALBUM_FILES = [
-  "qsd1-emoslay.json",
-  "qsd2-idhat.json",
-  "qsd3-sissypuss.json",
-  "qsd4-thecandidates.json",
-  "qsd5-psychward.json",
-  "qsd-khakishorts.json",
+  'qsd1-emoslay.json',
+  'qsd2-idhat.json',
+  'qsd-khakishorts.json', // moved right after IDHAT
+  'qsd3-sissypuss.json',
+  'qsd4-thecandidates.json',
+  'qsd5-psychward.json'
 ];
 
-/* Egg */
+/* Easter egg */
 console.log(
-  "%cQSD REBORN — look in the corners, little secrets hide ✨",
-  "color:#ff2ea6;font-weight:700"
+  '%cQSD ARCHIVE — hidden lore awaits ✨',
+  'color:#ff2ea6;font-weight:700'
 );
 
 /* Helpers */
@@ -26,227 +28,244 @@ async function fetchJSON(path) {
     if (!r.ok) throw new Error(`HTTP ${r.status}`);
     return await r.json();
   } catch (err) {
-    console.warn("fetchJSON error", path, err.message);
+    console.warn('fetchJSON error', path, err.message);
     return null;
   }
 }
 
-/* UI elements */
-const albumDetail = document.getElementById("album-detail");
-const albumDetailInner = document.getElementById("detail-inner");
-const detailBack = document.getElementById("detail-back");
-
-const modal = document.getElementById("track-modal");
-const modalBody = document.getElementById("modal-body");
-const modalClose = document.getElementById("modal-close");
-const prevBtn = document.getElementById("prev-track");
-const nextBtn = document.getElementById("next-track");
-
-const lyricsModal = document.createElement("div");
-lyricsModal.className = "modal hidden";
-lyricsModal.innerHTML = `
-  <div class="modal-panel">
-    <button id="lyrics-close" class="btn small">✕</button>
-    <div id="lyrics-body"></div>
-  </div>
-`;
-document.body.appendChild(lyricsModal);
-const lyricsClose = lyricsModal.querySelector("#lyrics-close");
-const lyricsBody = lyricsModal.querySelector("#lyrics-body");
+/* ----- Albums ----- */
+const albumGrid = document.getElementById('grid');
+const albumEmpty = document.getElementById('empty');
+const albumDetail = document.getElementById('album-detail');
+const albumInner = document.getElementById('detail-inner');
+const albumBack = document.getElementById('detail-back');
 
 let currentAlbum = null;
 let currentTracks = [];
 let currentTrackIndex = 0;
 
-/* Carousel builder */
-function makeCarousel(containerId, items, renderCard) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const track = container.querySelector(".carousel-track");
-  const prev = container.querySelector(".carousel-prev");
-  const next = container.querySelector(".carousel-next");
-
-  track.innerHTML = "";
-  items.forEach((item) => track.appendChild(renderCard(item)));
-
-  prev.addEventListener("click", () => {
-    track.scrollBy({ left: -200, behavior: "smooth" });
-  });
-  next.addEventListener("click", () => {
-    track.scrollBy({ left: 200, behavior: "smooth" });
-  });
-}
-
-/* ----- Albums ----- */
 async function loadAlbums() {
-  const albums = [];
+  if (!albumGrid) return;
+  albumGrid.innerHTML = '';
+  let any = false;
+
   for (const file of ALBUM_FILES) {
     const album = await fetchJSON(`${DATA_DIR}/${file}`);
-    if (album) albums.push({ ...album, file });
+    if (!album) continue;
+    any = true;
+
+    const safeName = file.replace('.json', '').replace(/^qsd\d?-/, '');
+    const cover = `assets/images/albumcovers/${safeName}.jpg`;
+
+    const card = document.createElement('div');
+    card.className = 'album-card';
+    card.innerHTML = `
+      <img src="${cover}" alt="${album.title}" class="cover"
+           onerror="this.src='${album.coverArt || 'assets/images/albumcovers/thecandidates.jpg'}'">
+      <h3>${album.title}</h3>
+      <p class="muted">${album.artist}</p>
+    `;
+
+    card.addEventListener('click', () => showAlbum(file, album));
+    albumGrid.appendChild(card);
   }
 
-  makeCarousel("albums-carousel", albums, (album) => {
-    const safeName = album.file.replace(".json", "").replace(/^qsd\d?-/, "");
-    const localCover = `assets/images/albumcovers/${safeName}.jpg`;
-
-    const card = document.createElement("div");
-    card.className = "carousel-card";
-    card.innerHTML = `
-      <img src="${localCover}" alt="${album.title}"
-        onerror="this.src='${album.coverArt || "assets/images/albumcovers/thecandidates.jpg"}'">
-      <div class="meta">
-        <h3>${album.title}</h3>
-        <p class="tiny muted">${album.artist}</p>
-      </div>
-    `;
-    card.addEventListener("click", () => showAlbum(album.file, album));
-    return card;
-  });
+  albumEmpty && (albumEmpty.style.display = any ? 'none' : 'block');
 }
 
-async function showAlbum(file, albumData = null) {
-  const album = albumData || (await fetchJSON(`${DATA_DIR}/${file}`));
-  if (!album) return;
+async function showAlbum(albumFile, albumData = null) {
+  const album = albumData || (await fetchJSON(`${DATA_DIR}/${albumFile}`));
+  if (!album || !albumInner) return;
 
-  currentAlbum = { file, ...album };
-  albumDetail.classList.remove("hidden");
+  currentAlbum = { file: albumFile, ...album };
+  albumDetail.classList.remove('hidden');
 
-  const safeName = file.replace(".json", "").replace(/^qsd\d?-/, "");
-  const localCover = `assets/images/albumcovers/${safeName}.jpg`;
+  const safeName = albumFile.replace('.json', '').replace(/^qsd\d?-/, '');
+  const cover = `assets/images/albumcovers/${safeName}.jpg`;
 
-  albumDetailInner.innerHTML = `
-    <h2 class="section-title">${album.title}</h2>
+  albumInner.innerHTML = `
+    <h2>${album.title}</h2>
     <div class="album-detail-header">
-      <img class="cover-large" src="${localCover}"
-        onerror="this.src='${album.coverArt || "assets/images/albumcovers/thecandidates.jpg"}'"
-        alt="${album.title}">
+      <img class="cover-large" src="${cover}" 
+           onerror="this.src='${album.coverArt || 'assets/images/albumcovers/thecandidates.jpg'}'" 
+           alt="${album.title}">
       <div class="album-text">
-        <p class="muted tiny"><b>Released:</b> ${album.releaseDate || "Unknown"}</p>
-        <p>${album.description || ""}</p>
+        <p class="muted tiny"><b>Released:</b> ${album.releaseDate || 'Unknown'}</p>
+        <p>${album.description || ''}</p>
       </div>
     </div>
     <h3>Tracklist</h3>
     <ul id="tracklist" class="tracklist"></ul>
   `;
 
-  const tracklistEl = document.getElementById("tracklist");
+  const tracklistEl = document.getElementById('tracklist');
+  tracklistEl.innerHTML = '<li class="muted tiny">Loading tracks…</li>';
+
   const tracks = await Promise.all(
     (album.tracklist || []).map(async (fn) => {
       const t = await fetchJSON(`${SONGS_DIR}/${fn}`);
       return t ? { ...t, filename: fn } : null;
     })
   );
-  currentTracks = tracks.filter(Boolean);
 
-  tracklistEl.innerHTML = "";
-  currentTracks.forEach((t, idx) => {
-    const li = document.createElement("li");
-    li.className = "track-item";
-    li.textContent = `${idx + 1}. ${t.title}`;
-    li.addEventListener("click", () => openTrackModal(idx));
-    tracklistEl.appendChild(li);
-  });
+  currentTracks = tracks.filter(Boolean);
+  tracklistEl.innerHTML = '';
+
+  if (!currentTracks.length) {
+    tracklistEl.innerHTML = '<li class="muted tiny">No tracks found.</li>';
+  } else {
+    currentTracks.forEach((t, idx) => {
+      const li = document.createElement('li');
+      li.className = 'track-item';
+      li.dataset.index = idx;
+      li.textContent = `${idx + 1}. ${t.title || 'Untitled'}`;
+      li.addEventListener('click', () => openTrackModal(idx));
+      tracklistEl.appendChild(li);
+    });
+  }
 }
 
-/* ----- Track modal ----- */
+albumBack?.addEventListener('click', () => {
+  albumDetail?.classList.add('hidden');
+});
+
+/* ----- Track Modal ----- */
+const modal = document.getElementById('track-modal');
+const modalBody = document.getElementById('modal-body');
+const modalClose = document.getElementById('modal-close');
+const prevBtn = document.getElementById('prev-track');
+const nextBtn = document.getElementById('next-track');
+
 async function openTrackModal(index) {
   currentTrackIndex = index;
   await renderTrack(index);
-  modal.classList.add("show");
-  modal.style.display = "flex";
-  modal.setAttribute("aria-hidden", "false");
-  document.body.style.overflow = "hidden";
+  if (modal) {
+    modal.classList.add('show');
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+  }
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  modal.classList.remove("show");
-  modal.setAttribute("aria-hidden", "true");
-  setTimeout(() => (modal.style.display = "none"), 300);
-  document.body.style.overflow = "";
+  if (modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    setTimeout(() => (modal.style.display = 'none'), 300);
+  }
+  document.body.style.overflow = '';
 }
 
 async function renderTrack(index) {
   const t = currentTracks[index];
   if (!t) return;
-  const base = t.filename.replace(".json", "");
+  const base = t.filename.replace('.json', '');
   const audioSrc = `${AUDIO_DIR}/${base}.opus`;
 
-  // Lyrics button logic
-  let lyricsUI = "";
+  let lyricsBlock = '';
   if (Array.isArray(t.lyrics) && t.lyrics.length > 0) {
-    if (t.lyrics.length === 1 && t.lyrics[0].toLowerCase().includes("instrumental")) {
-      lyricsUI = `<p class="muted tiny">🎵 This song is an instrumental.</p>`;
+    if (t.lyrics.length === 1 && t.lyrics[0].toLowerCase().includes('instrumental')) {
+      lyricsBlock = `<p class="muted">This song is an instrumental.</p>`;
     } else {
-      lyricsUI = `<button class="btn small" id="open-lyrics">📖 Lyrics</button>`;
+      lyricsBlock = `<button id="lyrics-btn" class="btn small">📖 Lyrics</button>`;
     }
   } else if (t.lyrics === null || (Array.isArray(t.lyrics) && t.lyrics.length === 0)) {
-    lyricsUI = `<p class="muted tiny">❌ Lyrics for this song aren't available.</p>`;
+    lyricsBlock = `<p class="muted">Lyrics for this song aren't available.</p>`;
   }
 
   modalBody.innerHTML = `
-    <h3>${t.title}${t.version ? " — " + t.version : ""}</h3>
+    <h3>${t.title}${t.version ? ' — ' + t.version : ''}</h3>
     <p class="muted tiny">
-      ${t.feature ? `feat. ${Array.isArray(t.feature) ? t.feature.join(", ") : t.feature}` : ""}
-      ${t.length ? ` • ${t.length}` : ""}
+      ${t.feature ? `feat. ${Array.isArray(t.feature) ? t.feature.join(', ') : t.feature}` : ''}
+      ${t.length ? ` • ${t.length}` : ''}
     </p>
-    <div style="margin-top:10px">${t.bio || ""}</div>
-    <div style="margin-top:10px">${lyricsUI}</div>
-    <div id="audio-wrap" style="margin-top:12px">
-      <audio controls preload="none" style="width:100%">
-        <source src="${audioSrc}" type="audio/ogg">
-      </audio>
-    </div>
+    <div style="margin:10px 0">${lyricsBlock}</div>
+    <p>${t.bio || ''}</p>
+    <audio controls preload="none" style="width:100%;margin-top:10px">
+      <source src="${audioSrc}" type="audio/ogg">
+    </audio>
   `;
 
-  // hook lyrics button
-  const btn = document.getElementById("open-lyrics");
-  if (btn) btn.addEventListener("click", () => openLyrics(t));
+  const lyricsBtn = document.getElementById('lyrics-btn');
+  if (lyricsBtn) {
+    lyricsBtn.addEventListener('click', () => {
+      const win = window.open('', '_blank');
+      win.document.write(`<pre style="white-space:pre-wrap;font-family:monospace;padding:20px">${t.lyrics.join('\n')}</pre>`);
+      win.document.title = `${t.title} — Lyrics`;
+    });
+  }
 }
 
-/* ----- Lyrics modal ----- */
-function openLyrics(track) {
-  lyricsBody.innerHTML = `
-    <h3>${track.title} — Lyrics</h3>
-    <pre style="white-space:pre-wrap;margin-top:10px;">${track.lyrics.join("\n")}</pre>
-  `;
-  lyricsModal.classList.add("show");
-  lyricsModal.style.display = "flex";
-  lyricsModal.setAttribute("aria-hidden", "false");
-}
-
-function closeLyrics() {
-  lyricsModal.classList.remove("show");
-  lyricsModal.setAttribute("aria-hidden", "true");
-  setTimeout(() => (lyricsModal.style.display = "none"), 300);
-}
-
-/* ----- Navigation & events ----- */
-detailBack?.addEventListener("click", () => {
-  albumDetail?.classList.add("hidden");
-});
-
-modalClose?.addEventListener("click", closeModal);
-lyricsClose?.addEventListener("click", closeLyrics);
-
-prevBtn?.addEventListener("click", async () => {
+modalClose?.addEventListener('click', closeModal);
+prevBtn?.addEventListener('click', async () => {
   currentTrackIndex = (currentTrackIndex - 1 + currentTracks.length) % currentTracks.length;
   await renderTrack(currentTrackIndex);
 });
-nextBtn?.addEventListener("click", async () => {
+nextBtn?.addEventListener('click', async () => {
   currentTrackIndex = (currentTrackIndex + 1) % currentTracks.length;
   await renderTrack(currentTrackIndex);
 });
+document.addEventListener('keydown', (e) => {
+  if (!modal || modal.getAttribute('aria-hidden') === 'true') return;
+  if (e.key === 'Escape') closeModal();
+  if (e.key === 'ArrowLeft') prevBtn?.click();
+  if (e.key === 'ArrowRight') nextBtn?.click();
+});
 
-document.addEventListener("keydown", (e) => {
-  if (!modal.classList.contains("show") && !lyricsModal.classList.contains("show")) return;
-  if (e.key === "Escape") {
-    if (lyricsModal.classList.contains("show")) closeLyrics();
-    else closeModal();
+/* ----- Artists ----- */
+const artistCarousel = document.getElementById('artist-carousel');
+const artistEmpty = document.getElementById('artist-empty');
+const artistDetail = document.getElementById('artist-detail');
+const artistInner = document.getElementById('artist-inner');
+const artistBack = document.getElementById('artist-back');
+
+async function loadArtists() {
+  if (!artistCarousel) return;
+  artistCarousel.innerHTML = '';
+  let any = false;
+
+  const files = ['cameronreid.json']; // expand later
+  for (const file of files) {
+    const artist = await fetchJSON(`${ARTISTS_DIR}/${file}`);
+    if (!artist) continue;
+    any = true;
+
+    const card = document.createElement('div');
+    card.className = 'artist-card';
+    card.innerHTML = `
+      <div class="artist-name">${artist.name}</div>
+      <p class="muted tiny">${artist.bio?.slice(0, 80) || ''}...</p>
+    `;
+    card.addEventListener('click', () => showArtist(file, artist));
+    artistCarousel.appendChild(card);
   }
+
+  artistEmpty && (artistEmpty.style.display = any ? 'none' : 'block');
+}
+
+async function showArtist(file, artistData = null) {
+  const artist = artistData || (await fetchJSON(`${ARTISTS_DIR}/${file}`));
+  if (!artist || !artistInner) return;
+
+  artistDetail.classList.remove('hidden');
+  artistInner.innerHTML = `
+    <h2>${artist.name}</h2>
+    <p>${artist.bio || ''}</p>
+    <div class="links">
+      ${artist.links ? Object.entries(artist.links).map(([p, u]) => `<a href="${u}" target="_blank">${p}</a>`).join(' • ') : ''}
+    </div>
+    <div class="artist-gallery">
+      ${(artist.gallery || []).map(img => `<img src="assets/images/artists/${artist.folder}/${img}" alt="">`).join('')}
+    </div>
+  `;
+}
+
+artistBack?.addEventListener('click', () => {
+  artistDetail?.classList.add('hidden');
 });
 
 /* ----- Init ----- */
-document.addEventListener("DOMContentLoaded", () => {
-  if (document.getElementById("albums-carousel")) loadAlbums();
+document.addEventListener('DOMContentLoaded', () => {
+  loadAlbums();
+  loadArtists();
 });
