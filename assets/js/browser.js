@@ -1,142 +1,124 @@
-/* browser.js — QSD Archive Browser */
+/* browser.js — loads albums, notable songs, artists into carousels/lists */
 
-const ALBUM_DIR = 'assets/albums';
-const SONG_DIR = `${ALBUM_DIR}/songs`;
-const ARTIST_DIR = 'assets/artists';
+const DATA_DIR = "assets/albums";
+const SONGS_DIR = `${DATA_DIR}/songs`;
+const ARTISTS_DIR = "assets/artists";
+const IMAGES_DIR = "assets/images";
 
-/* DOM refs */
-const albumCarousel = document.getElementById('album-carousel');
-const artistCarousel = document.getElementById('artist-carousel');
-const extraCarousel = document.getElementById('extra-carousel');
-const topTracksList = document.getElementById('top-tracks');
-
-/* Helpers */
 async function fetchJSON(path) {
   try {
-    const r = await fetch(path);
-    if (!r.ok) throw new Error(`HTTP ${r.status}`);
-    return await r.json();
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(res.status);
+    return await res.json();
   } catch (err) {
-    console.warn('fetchJSON error', path, err.message);
+    console.warn("fetchJSON error:", path, err.message);
     return null;
   }
 }
 
-function createCarouselItem(imgSrc, title, subtitle) {
-  const div = document.createElement('div');
-  div.className = 'carousel-item';
-  div.innerHTML = `
-    <img src="${imgSrc}" alt="${title}">
-    <h4>${title}</h4>
-    <p class="muted tiny">${subtitle || ''}</p>
-  `;
-  return div;
-}
+/* ----- Albums ----- */
+async function loadAlbums() {
+  const track = document.getElementById("albums-track");
+  const extraTrack = document.getElementById("extra-albums-track");
+  if (!track || !extraTrack) return;
 
-/* --- Albums (main discography) --- */
-async function loadAlbums(files) {
-  if (!albumCarousel) return;
-  albumCarousel.innerHTML = '';
+  const albumFiles = [
+    "qsd1-emoslay.json",
+    "qsd2-idhat.json",
+    "qsd-khakishorts.json",
+    "qsd3-sissypuss.json",
+    "qsd4-thecandidates.json",
+    "qsd5-psychward.json",
+    "jw-heelz.json",
+    "jw-theiconicpop.json",
+    "py-thesoundtrack.json"
+  ];
 
-  for (const file of files) {
-    const album = await fetchJSON(`${ALBUM_DIR}/${file}`);
+  for (const file of albumFiles) {
+    const album = await fetchJSON(`${DATA_DIR}/${file}`);
     if (!album) continue;
 
-    const safeName = file.replace('.json', '').replace(/^qsd\d?-/, '');
-    const cover = `assets/images/albumcovers/${safeName}.jpg`;
+    const safeName = file.replace(".json", "").replace(/^qsd\d?-/, "");
+    const cover = `${IMAGES_DIR}/albumcovers/${safeName}.jpg`;
 
-    const item = createCarouselItem(cover, album.title, album.artist);
-    item.addEventListener('click', () => openAlbumModal(album, file));
-    albumCarousel.appendChild(item);
+    const card = document.createElement("div");
+    card.className = "carousel-card";
+    card.innerHTML = `
+      <img src="${cover}" alt="${album.title}" 
+           onerror="this.src='${album.coverArt || cover}'">
+      <div class="meta">
+        <strong>${album.title}</strong>
+        <p class="muted tiny">${album.artist || "QSD"}</p>
+      </div>
+    `;
+    card.addEventListener("click", () => {
+      alert(`Album: ${album.title}`); // TODO: open modal
+    });
+
+    if (file.startsWith("qsd")) {
+      track.appendChild(card);
+    } else {
+      extraTrack.appendChild(card);
+    }
   }
 }
 
-/* --- Artists --- */
-async function loadArtists(files) {
-  if (!artistCarousel) return;
-  artistCarousel.innerHTML = '';
+/* ----- Songs ----- */
+async function loadSongs() {
+  const songsEl = document.getElementById("songs-list");
+  if (!songsEl) return;
 
-  for (const file of files) {
-    const artist = await fetchJSON(`${ARTIST_DIR}/${file}`);
-    if (!artist) continue;
+  const notable = [
+    "dontbeshy.json",
+    "dourthing.json",
+    "thenewbreakingpoint.json",
+    "sissypuss.json",
+    "icon.json"
+  ];
 
-    const thumb = artist.gallery?.length
-      ? `assets/images/artists/${artist.folder}/${artist.gallery[0]}`
-      : 'assets/images/QSD.png';
-
-    const item = createCarouselItem(thumb, artist.name, artist.bio?.slice(0, 50) + '…');
-    item.addEventListener('click', () => openArtistModal(artist, file));
-    artistCarousel.appendChild(item);
-  }
-}
-
-/* --- Other Notable Albums --- */
-async function loadExtras(files) {
-  if (!extraCarousel) return;
-  extraCarousel.innerHTML = '';
-
-  for (const file of files) {
-    const album = await fetchJSON(`${ALBUM_DIR}/${file}`);
-    if (!album) continue;
-
-    const safeName = file.replace('.json', '');
-    const cover = `assets/images/albumcovers/${safeName}.jpg`;
-
-    const item = createCarouselItem(cover, album.title, album.artist);
-    item.addEventListener('click', () => openAlbumModal(album, file));
-    extraCarousel.appendChild(item);
-  }
-}
-
-/* --- Top Tracks (Apple Music style) --- */
-async function loadTopTracks(files) {
-  if (!topTracksList) return;
-  topTracksList.innerHTML = '';
-
-  for (let i = 0; i < files.length; i++) {
-    const file = files[i];
-    const song = await fetchJSON(`${SONG_DIR}/${file}`);
+  for (const file of notable) {
+    const song = await fetchJSON(`${SONGS_DIR}/${file}`);
     if (!song) continue;
 
-    const li = document.createElement('li');
-    li.className = 'top-track';
-    li.innerHTML = `
-      <span class="track-num">${i + 1}</span>
-      <div class="track-info">
-        <div class="track-title">${song.title}</div>
-        <div class="track-sub muted tiny">${song.artist || 'QSD'}</div>
-      </div>
-      <span class="track-length">${song.length || ''}</span>
-    `;
-    li.addEventListener('click', () => openTrackModal(song, file));
-    topTracksList.appendChild(li);
+    const li = document.createElement("li");
+    li.textContent = song.title;
+    li.addEventListener("click", () => {
+      alert(`Play: ${song.title}`); // TODO: hook into player.js
+    });
+    songsEl.appendChild(li);
   }
 }
 
-/* --- Init --- */
-document.addEventListener('DOMContentLoaded', () => {
-  const albumFiles = [
-    'qsd1-emoslay.json',
-    'qsd2-idhat.json',
-    'qsd-khakishorts.json',
-    'qsd3-sissypuss.json',
-    'qsd4-thecandidates.json',
-    'qsd5-psychward.json'
-  ];
-  const topTrackFiles = [
-    'dontbeshy.json',
-    'dourthing.json',
-    'thenewbreakingpoint.json',
-    'sissypuss.json',
-    'cinematicoutro.json',
-    'heelzremix.json',
-    'icon.json'
-  ];
-  const artistFiles = ['cameronreid.json'];
-  const extraFiles = ['jw-heelz.json', 'jw-theiconicpop.json', 'py-thesoundtrack.json'];
+/* ----- Artists ----- */
+async function loadArtists() {
+  const track = document.getElementById("artists-track");
+  if (!track) return;
 
-  loadAlbums(albumFiles);
-  loadArtists(artistFiles);
-  loadExtras(extraFiles);
-  loadTopTracks(topTrackFiles);
+  const files = ["cameronreid.json"]; // expand later
+  for (const file of files) {
+    const artist = await fetchJSON(`${ARTISTS_DIR}/${file}`);
+    if (!artist) continue;
+
+    const card = document.createElement("div");
+    card.className = "carousel-card";
+    card.innerHTML = `
+      <img src="${IMAGES_DIR}/artists/${artist.folder}/${artist.gallery?.[0] || ""}" 
+           alt="${artist.name}">
+      <div class="meta">
+        <strong>${artist.name}</strong>
+      </div>
+    `;
+    card.addEventListener("click", () => {
+      alert(`Artist: ${artist.name}`); // TODO: open modal
+    });
+
+    track.appendChild(card);
+  }
+}
+
+/* ----- Init ----- */
+document.addEventListener("DOMContentLoaded", () => {
+  loadAlbums();
+  loadSongs();
+  loadArtists();
 });
