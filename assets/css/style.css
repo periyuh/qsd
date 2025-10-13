@@ -112,36 +112,40 @@ h2:hover {
   margin-bottom: 15px;
   border-bottom: 1px dashed #ff58b9;
   padding-bottom: 5px;
+  text-align: center;
 }
 
 .product-gallery {
   display: flex;
   justify-content: center;
-  gap: 40px;
+  gap: 20px; /* smaller gap for cohesive layout */
   flex-wrap: wrap;
 }
 
 .product {
   text-align: center;
-  max-width: 280px;
+  width: 140px; /* fixed small width */
+  flex-shrink: 0;
 }
 
 .product img {
-  width: 100%;
+  width: 100%; /* fills the 140px container */
+  height: auto; /* maintain aspect ratio */
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
 }
+
 .product img:hover {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(255, 46, 166, 0.6);
 }
 
 .product p {
-  margin-top: 10px;
-  font-size: 0.95rem;
+  margin-top: 5px;
+  font-size: 0.85rem;
   color: #ccc;
-  line-height: 1.4;
+  line-height: 1.3;
 }
 
 /* ===== Albums Carousel ===== */
