@@ -101,36 +101,21 @@ h2:hover {
 }
 
 /* ===== Product Sections ===== */
-.product-section {
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.product-section h3 {
-  font-size: 1.2rem;
-  color: #ff58b9;
-  margin-bottom: 15px;
-  border-bottom: 1px dashed #ff58b9;
-  padding-bottom: 5px;
-  text-align: center;
-}
-
 .product-gallery {
   display: flex;
   justify-content: center;
-  gap: 20px; /* smaller gap for cohesive layout */
+  gap: 20px;
   flex-wrap: wrap;
 }
 
 .product {
+  flex: 0 0 140px; /* don't grow, don't shrink, fixed width */
   text-align: center;
-  width: 140px; /* fixed small width */
-  flex-shrink: 0;
 }
 
 .product img {
-  width: 100%; /* fills the 140px container */
-  height: auto; /* maintain aspect ratio */
+  width: 100%;
+  height: auto;
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
   cursor: pointer;
