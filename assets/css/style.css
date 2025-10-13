@@ -117,23 +117,26 @@ h2:hover {
 /* Product gallery flex layout */
 .product-gallery {
   display: flex;
+  justify-content: flex-start; /* align left instead of centering huge gaps */
+  gap: 20px;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 15px;
+  max-width: 900px;  /* limit gallery width */
+  margin: 0 auto;    /* center the whole gallery */
 }
 
 /* Individual product card */
 .product {
-  flex: 0 0 140px;
+  flex: 0 0 140px;   /* fixed width */
+  max-width: 140px;  /* make sure it doesn't grow */
   text-align: center;
 }
 
 .product img {
   width: 100%;
   height: auto;
+  max-height: 140px; /* limit image height */
+  object-fit: cover; /* keep images looking nice */
   border-radius: 12px;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
 }
 
 .product img:hover {
