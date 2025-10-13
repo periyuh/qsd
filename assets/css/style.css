@@ -3,8 +3,8 @@
 body.construction {
   margin: 0;
   font-family: 'Comic Neue', 'Comic Sans MS', cursive;
-  background: #15151a url("../images/QSD TXTLS.png") center center / cover no-repeat fixed;
-  background-blend-mode: lighten; /* makes image brighter and clearer */
+  background: #15151a url("../images/qsdicons/QSD - Textless.png") center center / cover no-repeat fixed;
+  background-blend-mode: lighten;
   color: #fff;
   display: flex;
   justify-content: center;
@@ -15,7 +15,7 @@ body.construction {
 }
 
 .construction-wrapper {
-  background: rgba(20, 20, 30, 0.8); /* slightly transparent box, not too dark */
+  background: rgba(20, 20, 30, 0.8);
   border-radius: 16px;
   padding: 40px;
   max-width: 900px;
@@ -41,7 +41,7 @@ body.construction {
 
 .header img:hover {
   transform: scale(1.05);
-  filter: drop-shadow(0 0 15px #39ff14); /* neon green glow */
+  filter: drop-shadow(0 0 15px #39ff14);
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
@@ -100,12 +100,25 @@ h2:hover {
   color: #ddd;
 }
 
+/* ===== Product Sections ===== */
+.product-section {
+  width: 100%;
+  margin-bottom: 40px;
+}
+
+.product-section h3 {
+  font-size: 1.2rem;
+  color: #ff58b9;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #ff58b9;
+  padding-bottom: 5px;
+}
+
 .product-gallery {
   display: flex;
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-  margin-top: 30px;
 }
 
 .product {
@@ -131,6 +144,57 @@ h2:hover {
   line-height: 1.4;
 }
 
+/* ===== Albums Carousel ===== */
+.carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 0;
+  margin-top: 20px;
+  scroll-behavior: smooth;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 6px;
+}
+.carousel::-webkit-scrollbar-thumb {
+  background-color: #ff2ea6;
+  border-radius: 3px;
+}
+
+.carousel-card {
+  min-width: 140px;
+  background: rgba(30,30,40,0.7);
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-align: center;
+}
+
+.carousel-card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.carousel-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(255, 46, 166, 0.5);
+}
+
+.carousel-card .meta strong {
+  display: block;
+  font-size: 0.95rem;
+  color: #ff2ea6;
+}
+
+.carousel-card .meta .muted {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 700px) {
   .construction-wrapper {
     padding: 25px;
@@ -152,5 +216,9 @@ h2:hover {
 
   .product {
     max-width: 240px;
+  }
+
+  .carousel-card {
+    min-width: 120px;
   }
 }

@@ -1,69 +1,53 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>QueenServeantDonked</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QueenServeantDonked</title>
+<link rel="stylesheet" href="assets/css/style.css">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="assets/images/QSD.png">
-  <link rel="apple-touch-icon" href="assets/images/QSD.png">
+<!-- Favicon & Apple Touch -->
+<link rel="icon" type="image/png" href="assets/images/qsdicons/QSD - New Logo.png">
+<link rel="apple-touch-icon" href="assets/images/qsdicons/QSD - New Logo.png">
 
-  <!-- Font (Comic Neue = Comic Sans alternative) -->
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-
-  <!-- SEO & Social Metadata -->
-  <meta name="description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="QueenServeantDonked">
-  <meta property="og:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.">
-  <meta property="og:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
-  <meta property="og:url" content="https://qsdtimes.vercel.app/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="QueenServeantDonked">
-  <meta name="twitter:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.">
-  <meta name="twitter:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 </head>
 
 <body class="construction">
-  <main class="construction-wrapper">
-    <div class="header">
-      <div class="text">
-        <h1>QueenServeantDonked</h1>
-        <p class="funny-text">
-          QueenServeantDonked is a project hosted by producer <strong>periyuh</strong>, as a social experiment 
-          revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.
-        </p>
-      </div>
-      <img src="assets/images/QSD.png" alt="QSD Logo">
+<main class="construction-wrapper">
+  <div class="header">
+    <div class="text">
+      <h1>QueenServeantDonked</h1>
+      <p class="funny-text">
+        QueenServeantDonked is a project hosted by producer <strong>periyuh</strong>, as a social experiment 
+        revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.
+      </p>
     </div>
+    <img src="assets/images/qsdicons/QSD - New Logo.png" alt="QSD Logo">
+  </div>
 
-    <h2>🚧 Website Under Construction 🚧</h2>
+  <h2>🚧 Website Under Construction 🚧</h2>
 
-    <div class="btn-row">
-      <a href="chaos.html" class="btn">Chaos Page</a>
-    </div>
+  <div class="btn-row">
+    <a href="chaos.html" class="btn">Chaos Page</a>
+  </div>
 
-    <p class="products-intro">
-      While the website is being worked on, you can check out our new physical releases:
-    </p>
+  <!-- Physical Releases -->
+  <p class="products-intro">
+    While the website is being worked on, you can check out our new physical releases:
+  </p>
+  <div id="product-gallery" class="product-gallery">
+    <!-- Products loaded by products.js -->
+  </div>
 
-    <div class="product-gallery">
-      <a href="https://elasticstage.com/qsd/releases/the-candidates-album" target="_blank" class="product">
-        <img src="assets/images/products/candidates_vinyl.png" alt="The Candidates Vinyl">
-        <p><strong>The Candidates</strong><br>Vinyl + CD - includes booklet</p>
-      </a>
+  <!-- Albums Carousel -->
+  <h2>Albums</h2>
+  <div id="albums-track" class="carousel"></div>
+  <div id="extra-albums-track" class="carousel"></div>
+</main>
 
-      <a href="https://elasticstage.com/qsd/releases/psych-ward-vibes-for-your-long-stripes-album" target="_blank" class="product">
-        <img src="assets/images/products/psychward_vinyl.png" alt="Psych Ward Vinyl">
-        <p><strong>psycH ward vibEs for your Long striPes</strong><br>Vinyl + CD</p>
-      </a>
-    </div>
-  </main>
+<script src="assets/js/products.js"></script>
+<script src="assets/js/browser.js"></script>
 </body>
 </html>

@@ -1,0 +1,67 @@
+{
+  "products": [
+    {
+      "album": "The Candidates",
+      "slug": "the-candidates",
+      "store": "ElasticStage",
+      "items": [
+        {
+          "format": "Vinyl + Booklet",
+          "price": 37.90,
+          "image": "assets/images/products/elasticstage_candidates_vinyl.png",
+          "link": "https://elasticstage.com/qsd/releases/the-candidates-album",
+          "description": "12-track album pressed on 12-inch black vinyl. Includes an inner and outer sleeve, a 12-page lyric booklet."
+        },
+        {
+          "format": "CD + Booklet",
+          "price": 14.90,
+          "image": "assets/images/products/elasticstage_candidates_softpack.png",
+          "link": "https://elasticstage.com/qsd/releases/the-candidates-album",
+          "description": "Softpack CD release of *The Candidates*, including a 12-page lyric booklet and full album audio."
+        }
+      ]
+    },
+    {
+      "album": "psycH ward vibEs for your Long striPes",
+      "slug": "psychward",
+      "store": "ElasticStage",
+      "items": [
+        {
+          "format": "Vinyl",
+          "price": 31.90,
+          "image": "assets/images/products/elasticstage_psychward_vinyl.png",
+          "link": "https://elasticstage.com/qsd/releases/psych-ward-vibes-for-your-long-stripes-album",
+          "description": "12-track album pressed on 12-inch black vinyl. Includes an inner and outer sleeve."
+        },
+        {
+          "format": "CD",
+          "price": 12.90,
+          "image": "assets/images/products/elasticstage_psychward_softpack.png",
+          "link": "https://elasticstage.com/qsd/releases/psych-ward-vibes-for-your-long-stripes-album",
+          "description": "Softpack CD release of *psycH ward vibEs for your Long striPes*."
+        }
+      ]
+    },
+    {
+      "album": "The Candidates",
+      "slug": "candidates-kunaki",
+      "store": "Kunaki",
+      "items": [
+        {
+          "format": "Jewel Case CD",
+          "price": 5.00,
+          "image": "assets/images/products/kunaki_candidates_cd.png",
+          "link": "https://kunaki.com/Sales.asp?PID=PX00KTEL54",
+          "description": "Standard jewel case CD edition of *The Candidates*. Manufactured by Kunaki, featuring a two-sided insert and 12 full tracks."
+        },
+        {
+          "format": "Sky Vinyl",
+          "price": 50.00,
+          "image": "assets/images/products/kunaki_candidates_skyvinyl.png",
+          "link": "https://kunaki.com/vinylRecord.ASP?ProductId=px00zv4kbj",
+          "description": "Limited Kunaki pressing of *The Candidates* on sky-colored 12-inch vinyl. Color may vary from the rendered images."
+        }
+      ]
+    }
+  ]
+}
