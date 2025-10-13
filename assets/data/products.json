@@ -60,6 +60,41 @@
           "image": "assets/images/products/kunaki_candidates_skyvinyl.png",
           "link": "https://kunaki.com/vinylRecord.ASP?ProductId=px00zv4kbj",
           "description": "Limited Kunaki pressing of *The Candidates* on sky-colored 12-inch vinyl. Color may vary from the rendered images."
+        },
+        {
+          "format": "Standard Black Vinyl",
+          "price": 40.00,
+          "image": "assets/images/products/kunaki_candidates_vinyl.png",
+          "link": "https://kunaki.com/vinylRecord.ASP?ProductId=px00mv2wvz",
+          "description": "Standard black vinyl edition of *The Candidates* pressed by Kunaki."
+        }
+      ]
+    },
+    {
+      "album": "SISSYPUSS",
+      "slug": "sissypuss",
+      "store": "Kunaki",
+      "items": [
+        {
+          "format": "Jewel Case CD",
+          "price": 5.00,
+          "image": "assets/images/products/kunaki_sissypuss_cd.png",
+          "link": "http://Kunaki.com/Sales.asp?PID=PX00GLA5YU",
+          "description": "Jewel case CD edition of *SISSYPUSS*. Manufactured by Kunaki."
+        }
+      ]
+    },
+    {
+      "album": "it doesn't have a title",
+      "slug": "idhat",
+      "store": "Kunaki",
+      "items": [
+        {
+          "format": "Jewel Case CD",
+          "price": 5.00,
+          "image": "assets/images/products/kunaki_idhat_cd.png",
+          "link": "http://Kunaki.com/Sales.asp?PID=PX00Z19L0H",
+          "description": "Jewel case CD edition of *it doesn't have a title*. Manufactured by Kunaki."
         }
       ]
     }

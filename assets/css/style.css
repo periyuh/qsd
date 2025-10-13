@@ -121,10 +121,10 @@ h2:hover {
 
 /* ===== Individual Product Card ===== */
 .product {
-  width: 160px;             /* small, fixed width */
+  width: 200px;
   text-align: center;
-  font-size: 0.9rem;
-  flex: 0 0 auto;           /* don’t grow or shrink */
+  font-size: 0.95rem;
+  flex: 0 0 auto;
 }
 
 .product img {
@@ -218,7 +218,7 @@ h2:hover {
   }
 
   .product {
-    width: 130px;           /* shrink cards on mobile */
+    width: 160px;
   }
 
   .carousel-card {
