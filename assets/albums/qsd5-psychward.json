@@ -1,24 +1,24 @@
 {
-    "title": "psycH ward vibEs for your Long striPes",
-    "artist": "QueenServeantDonked",
-    "releaseDate": "April 1, 2025",
-    "coverArt": null,
-    "description": null,
-    "links": {},
-    "buy": {},
-    "tracklist": [
-      "assholepart1.json",
-      "freakyfever.json",
-      "dreamwalker.json",
-      "primitiveages.json",
-      "chaostheory.json",
-      "hyperspeed.json",
-      "absolutetrash.json",
-      "safarisoul.json",
-      "porkynotquirky.json",
-      "toxicpsychopathy.json",
-      "thegroove.json",
-      "assholepart2.json"
-    ]
-  }
-  
+  "title": "psycH ward vibEs for your Long striPes",
+  "artist": "QueenServeantDonked",
+  "carousel": "main",
+  "releaseDate": "April 1, 2025",
+  "coverArt": "assets/images/albumcovers/psychward.jpg",
+  "description": "Fully instrumental experimental album. Abstract textures and cinematic soundscapes with tracks like TOxic psychOpaTHy and thé groove, exploring music beyond vocals.",
+  "links": {},
+  "buy": {},
+  "tracklist": [
+    "assholepart1.json",
+    "freakyfever.json",
+    "dreamwalker.json",
+    "primitiveages.json",
+    "chaostheory.json",
+    "hyperspeed.json",
+    "absolutetrash.json",
+    "safarisoul.json",
+    "porkynotquirky.json",
+    "toxicpsychopathy.json",
+    "thegroove.json",
+    "assholepart2.json"
+  ]
+}

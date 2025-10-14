@@ -1,18 +1,18 @@
 {
-    "title": "Khaki Shorts",
-    "artist": "QueenServeantDonked",
-    "releaseDate": "April 3, 2024",
-    "coverArt": null,
-    "description": null,
-    "links": {},
-    "buy": {},
-    "tracklist": [
-      "whereissatpop.json",
-      "furrysounds.json",
-      "poprocks.json",
-      "unreasonable.json",
-      "primmremix.json",
-      "nomremix.json"
-    ]
-  }
-  
+  "title": "Khaki Shorts",
+  "artist": "QueenServeantDonked",
+  "carousel": "main",
+  "releaseDate": "April 3, 2024",
+  "coverArt": "assets/images/albumcovers/khakishorts.jpg",
+  "description": "Playful, humorous EP emphasizing QSD’s experimental side. Early singles and collaborative tracks that preview the sound of The Candidates and SISSYPUSS.",
+  "links": {},
+  "buy": {},
+  "tracklist": [
+    "whereissatpop.json",
+    "furrysounds.json",
+    "poprocks.json",
+    "unreasonable.json",
+    "primmremix.json",
+    "nomremix.json"
+  ]
+}

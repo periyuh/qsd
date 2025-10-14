@@ -53,5 +53,3 @@ async function loadAlbums() {
     }
   }
 }
-
-document.addEventListener("DOMContentLoaded", loadAlbums);

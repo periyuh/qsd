@@ -1,24 +1,24 @@
 {
-    "title": "The Candidates",
-    "artist": "QueenServeantDonked",
-    "releaseDate": "April 1, 2025",
-    "coverArt": null,
-    "description": null,
-    "links": {},
-    "buy": {},
-    "tracklist": [
-      "aprilfools.json",
-      "icon.json",
-      "confusedlofiremix.json",
-      "whereissatpop.json",
-      "beyondmyyears.json",
-      "basicwhitefurrygirl.json",
-      "explicitcontent.json",
-      "dourthing.json",
-      "dbsp.json",
-      "dontbeshy.json",
-      "oohsong.json",
-      "cinematicoutro.json"
-    ]
-  }
-  
+  "title": "The Candidates",
+  "artist": "QueenServeantDonked",
+  "carousel": "main",
+  "releaseDate": "April 1, 2025",
+  "coverArt": "assets/images/albumcovers/thecandidates.jpg",
+  "description": "A remix-heavy, experimental album blending leftover tracks with playful new material. Features collaborations and digital exclusives. Highlights: APRIL FOOLS!, ICON.",
+  "links": {},
+  "buy": {},
+  "tracklist": [
+    "aprilfools.json",
+    "icon.json",
+    "confusedlofiremix.json",
+    "whereissatpop.json",
+    "beyondmyyears.json",
+    "basicwhitefurrygirl.json",
+    "explicitcontent.json",
+    "dourthing.json",
+    "dbsp.json",
+    "dontbeshy.json",
+    "oohsong.json",
+    "cinematicoutro.json"
+  ]
+}
