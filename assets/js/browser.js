@@ -55,3 +55,4 @@ async function loadAlbums() {
 }
 
 document.addEventListener("DOMContentLoaded", loadAlbums);
+<script src="assets/js/site.js"></script>

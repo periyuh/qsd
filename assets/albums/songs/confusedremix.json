@@ -1,13 +1,11 @@
 {
-  "album": "EMOtional SLAYage",
-  "trackNumber": 4,
+  "album": "The Iconic Pop",
+  "trackNumber": 9,
   "title": "Confused",
-  "feature": [
-    "JinnaWoods"
-  ],
-  "version": null,
-  "length": "3:00",
-  "bio": "\u201cConfused\u201d originated from a call where JinnaWoods struggled to write his track \u201cTrue Icon\u201d for his scrapped album *New York Slutz*. His rambling frustration was turned into a track, with QueenServeantDonked later adding vocals. Released April 1, 2022, it became QSD\u2019s first single and was later included as track four on *EMOtional SLAYage* (2023).",
+  "feature": ["JinnaWoods"],
+  "version": "Remix",
+  "length": "3:04",
+  "bio": "A remix of 'Confused' with experimental production. Same vocals as the original, but reimagined instrumentally.",
   "lyrics": [
     "Okay, so",
     "Woo, doo-do-do-doo ooh!",
@@ -71,8 +69,8 @@
   ],
   "coverArt": null,
   "links": {},
-  "remixOf": ["trueicon"],
-  "remixedOn": ["confusedremix", "confusedlofiremix"],
+  "remixOf": ["confused"],
+  "remixedOn": [],
   "sampleOf": [],
   "sampledOn": []
 }

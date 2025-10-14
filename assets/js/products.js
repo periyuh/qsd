@@ -44,3 +44,4 @@ async function loadProducts() {
 }
 
 document.addEventListener('DOMContentLoaded', loadProducts);
+<script src="assets/js/site.js"></script>
