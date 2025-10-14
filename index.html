@@ -1,49 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>QueenServeantDonked</title>
-<link rel="stylesheet" href="assets/css/style.css">
-<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QueenServeantDonked</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-<main id="homepage">
+  <main id="homepage">
 
-  <!-- Hero -->
-  <section id="hero">
-    <img id="logo" src="" alt="QSD Logo">
-    <h1 id="site-name"></h1>
-    <p id="site-tagline"></p>
-    <p id="chaos-quote">Loading chaos...</p>
-    <button id="enter-chaos">Enter Chaos</button>
-  </section>
+    <!-- Hero -->
+    <section id="hero" class="panel">
+      <div class="hero-inner">
+        <img id="logo" src="" alt="QSD Logo" />
+        <div class="hero-text">
+          <h1 id="site-name">QueenServeantDonked</h1>
+          <p id="site-tagline" class="muted">a social experiment about chaos and sound</p>
+          <p id="chaos-quote" class="quote">Loading chaos...</p>
+          <div class="hero-actions">
+            <button id="enter-chaos" class="btn">Enter Chaos</button>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <!-- About QSD -->
-  <section id="about-qsd">
-    <h2>About QSD</h2>
-    <div id="about-cards"></div>
-  </section>
+    <!-- About QSD -->
+    <section id="about-qsd" class="panel">
+      <h2>About QSD</h2>
+      <div id="about-cards" class="cards-row"></div>
+    </section>
 
-  <!-- Albums Carousel -->
-  <section id="releases">
-    <h2>Releases</h2>
-    <div id="albums-carousel" class="carousel"></div>
-  </section>
+    <!-- Releases -->
+    <section id="releases" class="panel">
+      <h2>Releases</h2>
+      <div id="albums-carousel" class="carousel"></div>
+    </section>
 
-  <!-- Artists Grid -->
-  <section id="artists">
-    <h2>Artists</h2>
-    <div id="artists-grid"></div>
-  </section>
+    <!-- Artists Grid -->
+    <section id="artists" class="panel">
+      <h2>Artists</h2>
+      <div id="artists-grid" class="cards-row"></div>
+    </section>
 
-  <!-- Footer -->
-  <footer id="site-footer">
-    <p id="footer-text"></p>
-    <div id="footer-links"></div>
-  </footer>
+    <!-- Footer -->
+    <footer id="site-footer" class="panel">
+      <p id="footer-text" class="muted"></p>
+      <div id="footer-links" class="footer-links"></div>
+    </footer>
 
-</main>
-<script src="assets/js/site.js"></script>
+    <!-- Simple album modal (reused for future expansion) -->
+    <div id="modal" class="modal hidden" role="dialog" aria-hidden="true">
+      <div class="modal-backdrop" data-action="close"></div>
+      <div class="modal-panel">
+        <button class="modal-close" data-action="close">✕</button>
+        <div id="modal-content"></div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/site.js"></script>
 </body>
 </html>
