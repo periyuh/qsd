@@ -1,9 +1,19 @@
 {
-  "title": "QueenServeantDonked",
-  "tagline": "A surreal archive of chaos, lore, and sound.",
-  "bio": "QueenServeantDonked (QSD) is an experimental collective project hosted by producer periyuh, exploring satire, identity, and sound through absurdist artistry. Every April Fool’s Day brings new chaos — a mix of humor, discomfort, and raw self-expression.",
-  "logos": {
-    "main": "assets/images/qsdicons/QSD - New Logo.png",
-    "banner": "assets/images/qsdicons/QSD - Big Cursive.png"
+  "site": {
+    "name": "QueenServeantDonked",
+    "tagline": "a social experiment about chaos and sound",
+    "logo": "assets/images/qsdicons/QSD - New Logo.png",
+    "background": "assets/images/qsdicons/QSD - Textless.png",
+    "links": {
+      "Discord": "https://discord.gg/zrxwMQgYt7",
+      "Spotify": "https://open.spotify.com/artist/0nVk4sn42nB6NZ0D7B39pP?si=Mi2HH32aQVKrOzVAp6Ot2A",
+      "YouTube": "https://www.youtube.com/@QueenServeantDonked",
+      "TikTok": "https://www.tiktok.com/@queenserveantdonked",
+      "Bandcamp": "https://queenserveantdonked.bandcamp.com/",
+      "Linktree": "https://linktr.ee/queenserveantdonked"
+    },
+    "chaosQuotesJSON": "assets/data/chaoslines.json",
+    "artistsJSON": "assets/artists",
+    "albumsJSON": "assets/albums"
   }
 }

@@ -1,73 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QueenServeantDonked</title>
 <link rel="stylesheet" href="assets/css/style.css">
-
-<!-- Favicon & Apple Touch -->
-<link rel="icon" type="image/png" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
-<link rel="apple-touch-icon" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
-
-<!-- Font -->
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
-
-<!-- SEO & Social Metadata -->
-<meta name="description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool's Day.">
-
-<!-- Open Graph -->
-<meta property="og:title" content="QueenServeantDonked">
-<meta property="og:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool’s Day.">
-<meta property="og:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
-<meta property="og:image:width" content="150">
-<meta property="og:image:height" content="150">
-<meta property="og:url" content="https://qsdtimes.vercel.app/">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QueenServeantDonked">
-<meta name="twitter:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool’s Day.">
-<meta name="twitter:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
-<meta name="twitter:image:width" content="150">
-<meta name="twitter:image:height" content="150">
-
 </head>
-<body class="construction">
-<main class="construction-wrapper">
-  <div class="header">
-    <div class="text">
-      <h1>QueenServeantDonked</h1>
-      <p class="funny-text">
-        QueenServeantDonked is a project hosted by producer <strong>periyuh</strong>, as a social experiment 
-        revolving satirical music, experimental sounds and controversial topics, with albums releasing on April Fool’s Day.
-      </p>
-    </div>
-    <img src="assets/images/qsdicons/QSD - New Logo.png" alt="QSD Logo">
-  </div>
+<body>
+<main id="homepage">
 
-  <h2>🚧 Website Under Construction 🚧</h2>
+  <!-- Hero -->
+  <section id="hero">
+    <img id="logo" src="" alt="QSD Logo">
+    <h1 id="site-name"></h1>
+    <p id="site-tagline"></p>
+    <p id="chaos-quote">Loading chaos...</p>
+    <button id="enter-chaos">Enter Chaos</button>
+  </section>
 
-  <div class="btn-row">
-    <a href="chaos.html" class="btn">Chaos Page</a>
-  </div>
-
-  <!-- Physical Releases -->
-  <p class="products-intro">
-    While the website is being worked on, you can check out our new physical releases:
-  </p>
-  <div id="product-gallery" class="product-gallery">
-    <!-- Products loaded by products.js -->
-  </div>
+  <!-- About QSD -->
+  <section id="about-qsd">
+    <h2>About QSD</h2>
+    <div id="about-cards"></div>
+  </section>
 
   <!-- Albums Carousel -->
-  <h2>Albums</h2>
-  <div id="albums-track" class="carousel"></div>
-  <div id="extra-albums-track" class="carousel"></div>
-</main>
+  <section id="releases">
+    <h2>Releases</h2>
+    <div id="albums-carousel" class="carousel"></div>
+  </section>
 
-<script src="assets/js/products.js"></script>
-<script src="assets/js/browser.js"></script>
+  <!-- Artists Grid -->
+  <section id="artists">
+    <h2>Artists</h2>
+    <div id="artists-grid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="site-footer">
+    <p id="footer-text"></p>
+    <div id="footer-links"></div>
+  </footer>
+
+</main>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
