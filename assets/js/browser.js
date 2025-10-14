@@ -1,5 +1,4 @@
 const DATA_DIR = "assets/albums";
-const IMAGES_DIR = "assets/images";
 
 async function fetchJSON(path) {
   try {
@@ -30,26 +29,26 @@ async function loadAlbums() {
     const album = await fetchJSON(`${DATA_DIR}/${file}`);
     if (!album) continue;
 
-    const safeName = file.replace(".json", "").replace(/^qsd\d?-/, "");
-    const cover = `${IMAGES_DIR}/albumcovers/${safeName}.jpg`;
-
     const card = document.createElement("div");
     card.className = "carousel-card";
     card.innerHTML = `
-      <img src="${cover}" alt="${album.title}" onerror="this.src='${album.coverArt || cover}'">
+      <img src="${album.coverArt}" alt="${album.title}">
       <div class="meta">
         <strong>${album.title}</strong>
-        <p class="muted tiny">${album.artist || "QSD"}</p>
+        <span class="muted">${album.artist || "QSD"}</span>
       </div>
     `;
+
     card.addEventListener("click", () => {
-      alert(`Album: ${album.title}`); // TODO: modal
+      alert(`Album: ${album.title}`); // Placeholder for modal
     });
 
-    if (file.startsWith("qsd")) {
+    if (album.carousel === "main") {
       track.appendChild(card);
     } else {
       extraTrack.appendChild(card);
     }
   }
 }
+
+document.addEventListener("DOMContentLoaded", loadAlbums);
