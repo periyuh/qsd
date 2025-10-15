@@ -111,30 +111,65 @@ body.qsd-home {
   color: #ccc;
 }
 
-/* PRODUCT GALLERY */
+/* PRODUCT GALLERY — restored version */
+.products-intro {
+  margin-top: 40px;
+  font-size: 1.1rem;
+  color: #ddd;
+}
+
 .product-gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.product-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-top: 15px;
+  margin-bottom: 40px;
 }
+
+.product-section h3 {
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #ff58b9;
+  margin-bottom: 15px;
+  border-bottom: 1px dashed #ff58b9;
+  padding-bottom: 5px;
+}
+
+/* Product cards */
 .product {
-  width: 180px;
+  width: 200px;
+  text-align: center;
+  font-size: 0.95rem;
+  flex: 0 0 auto;
 }
+
 .product img {
   width: 100%;
+  height: auto;
   border-radius: 12px;
   transition: transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
+
 .product img:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(255,46,166,0.6);
+  box-shadow: 0 0 20px rgba(255, 46, 166, 0.6);
 }
+
 .product p {
   margin-top: 8px;
   font-size: 0.85rem;
   color: #ccc;
+  line-height: 1.3;
 }
 
 /* FOOTER */
