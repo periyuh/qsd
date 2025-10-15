@@ -5,75 +5,55 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>QueenServeantDonked</title>
 
-<!-- Styles -->
 <link rel="stylesheet" href="assets/css/style.css">
-
-<!-- Favicon & Apple Touch -->
-<link rel="icon" type="image/png" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
-<link rel="apple-touch-icon" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
-
-<!-- Font -->
+<link rel="icon" type="image/png" href="assets/images/qsdicons/QSD - New Logo.png">
+<link rel="apple-touch-icon" href="assets/images/qsdicons/QSD - New Logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 
-<!-- SEO & Social Metadata -->
-<meta name="description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool's Day.">
-
-<!-- Open Graph -->
+<meta name="description" content="QueenServeantDonked (QSD) — a musical chaos collective led by periyuh, blending satire, emotion, and noise.">
 <meta property="og:title" content="QueenServeantDonked">
-<meta property="og:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool’s Day.">
+<meta property="og:description" content="Dive into the QSD universe — listen, explore, and witness the freaks with mics.">
 <meta property="og:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
-<meta property="og:image:width" content="150">
-<meta property="og:image:height" content="150">
-<meta property="og:url" content="https://qsdtimes.vercel.app/">
 <meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="QueenServeantDonked">
-<meta name="twitter:description" content="QueenServeantDonked is a project hosted by producer periyuh, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool’s Day.">
-<meta name="twitter:image" content="https://qsdtimes.vercel.app/assets/images/QSD.png">
-<meta name="twitter:image:width" content="150">
-<meta name="twitter:image:height" content="150">
-
 </head>
-<body class="construction">
 
-<main class="construction-wrapper">
+<body class="qsd-home">
 
-  <!-- Header -->
-  <div class="header">
-    <div class="text">
-      <h1>QueenServeantDonked</h1>
-      <p class="funny-text">
-        QueenServeantDonked is a project hosted by producer <strong>periyuh</strong>, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool’s Day.
-      </p>
-    </div>
-    <img src="assets/images/qsdicons/QSD - New Logo.png" alt="QSD Logo">
+<header class="qsd-header">
+  <img src="assets/images/qsdicons/QSD - New Logo.png" alt="QSD Logo" class="qsd-logo">
+  <div class="qsd-intro">
+    <h1>QueenServeantDonked</h1>
+    <p>one freak without a mic and a bunch of freaks <strong>with</strong> mics</p>
   </div>
+</header>
 
-  <h2>🚧 Website Under Construction 🚧</h2>
+<main class="qsd-main">
 
-  <!-- Button -->
-  <div class="btn-row">
-    <a href="chaos.html" class="btn">Chaos Page</a>
-  </div>
+  <section class="qsd-about floating-card">
+    <h2>what is QSD?</h2>
+    <p><strong>QueenServeantDonked</strong> is a project led by <em>periyuh</em> — a chaotic blend of satire, sincerity, and experimental pop. each release is an april fool’s explosion of absurdity and emotion.</p>
+    <p>since 2023, QSD’s albums have turned the internet’s noise into art — from <em>EMOtional SLAYage</em> to <em>The Candidates</em>. every drop builds its own world, every song another piece of the mess.</p>
+  </section>
 
-  <!-- Physical Releases -->
-  <p class="products-intro">
-    While the website is being worked on, you can check out our new physical releases:
-  </p>
-  <div id="product-gallery" class="product-gallery">
-    <!-- Products loaded by products.js -->
-  </div>
+  <section class="qsd-browser floating-card">
+    <h2>explore the catalog</h2>
+    <p>albums, singles, artists — click and wander through chaos.</p>
+    <div id="albums-track" class="carousel"></div>
+    <div id="extra-albums-track" class="carousel"></div>
+  </section>
 
-  <!-- Albums Carousel -->
-  <h2>Albums</h2>
-  <div id="albums-track" class="carousel"></div>
-  <div id="extra-albums-track" class="carousel"></div>
+  <section class="qsd-products floating-card">
+    <h2>physical releases</h2>
+    <p>yes, these freaks have merch. real discs, real chaos.</p>
+    <div id="product-gallery" class="product-gallery"></div>
+  </section>
 
 </main>
 
-<!-- Scripts -->
+<footer class="qsd-footer">
+  <p>© QueenServeantDonked • built by weirdos for weirdos</p>
+</footer>
+
 <script src="assets/js/products.js"></script>
 <script src="assets/js/browser.js"></script>
 
