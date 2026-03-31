@@ -1,6 +1,6 @@
 {
-  "album": "EMOtional SLAYage",
-  "trackNumber": 4,
+  "album": ["EMOtional SLAYage", "The Iconic Pop"],
+  "trackNumber": [4, 4],
   "title": "Confused",
   "feature": [
     "JinnaWoods"

@@ -1,9 +1,9 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "primmremix",
+    "album": ["it doesn't have a title", "Khaki Shorts"],
+    "trackNumber": [5, 5],
+    "title": "phone refractions in my mind",
     "feature": null,
-    "version": null,
+    "version": "Remix",
     "length": null,
     "bio": null,
     "lyrics": null,

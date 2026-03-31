@@ -12,87 +12,147 @@ async function fetchAllJSON(folder, files) {
   return data;
 }
 
-async function loadSite() {
-  const siteData = await loadJSON('assets/data/site.json');
-  const site = siteData.site;
-
-  // Hero
-  document.getElementById('logo').src = site.logo;
-  document.getElementById('site-name').textContent = site.name;
-  document.getElementById('site-tagline').textContent = site.tagline;
-
-  // Chaos quotes
-  const quotesData = await loadJSON(site.chaosQuotesJSON);
-  const quoteEl = document.getElementById('chaos-quote');
-  let currentQuote = 0;
-  function rotateQuote() {
-    quoteEl.textContent = quotesData.quotes[currentQuote];
-    currentQuote = (currentQuote + 1) % quotesData.quotes.length;
+function closeSiteModal(overlay) {
+  if (overlay && overlay.parentNode) {
+    overlay.parentNode.removeChild(overlay);
   }
-  rotateQuote();
-  setInterval(rotateQuote, 5000);
-
-  // About Cards
-  const aboutCardsEl = document.getElementById('about-cards');
-  const aboutCards = [
-    {title:"What is QSD?", content:"QueenServeantDonked is a chaos-driven music collective blending satire, identity, and absurdity."},
-    {title:"Who’s Involved?", content:"JinnaWoods · Barbiebitch · Periyuh · Cameron Reid · + Guests"},
-    {title:"How It Works", content:"Every April Fool’s Day, something new drops. Albums connect through recurring sounds, characters, and inside jokes."}
-  ];
-  aboutCards.forEach(card=>{
-    const div=document.createElement('div');
-    div.className='about-card';
-    div.innerHTML=`<h3>${card.title}</h3><p>${card.content}</p>`;
-    aboutCardsEl.appendChild(div);
-  });
-
-  // Albums Carousel
-  const albumFiles = [
-    "jw-heelz.json","jw-theiconicpop.json","py-thesoundtrack.json",
-    "qsd-khakishorts.json","qsd1-emoslay.json","qsd2-idhat.json",
-    "qsd3-sissypuss.json","qsd4-thecandidates.json","qsd5-psychward.json"
-  ];
-  const albums = await fetchAllJSON(site.albumsJSON, albumFiles);
-  const albumsEl = document.getElementById('albums-carousel');
-  albums.forEach(album=>{
-    const div=document.createElement('div');
-    div.className='carousel-card';
-    div.innerHTML=`
-      <img src="${album.cover}" alt="${album.title}">
-      <div class="meta">
-        <strong>${album.title}</strong>
-        <span class="muted">${album.year}</span>
-      </div>`;
-    albumsEl.appendChild(div);
-  });
-
-  // Artists
-  const artistFiles = ["cameronreid.json","periyuh.json"];
-  const artists = await fetchAllJSON(site.artistsJSON, artistFiles);
-  const artistsGrid = document.getElementById('artists-grid');
-  artists.forEach(artist=>{
-    const div=document.createElement('div');
-    div.className='artist-card';
-    div.innerHTML=`
-      <img src="${artist.image}" alt="${artist.name}">
-      <h4>${artist.name}</h4>
-      <p>${artist.bio}</p>`;
-    artistsGrid.appendChild(div);
-  });
-
-  // Footer
-  document.getElementById('footer-text').textContent=`© 2025 ${site.name} — Hosted on ElasticStage`;
-  const footerLinksEl=document.getElementById('footer-links');
-  for(const[name,url] of Object.entries(site.links)){
-    const a=document.createElement('a');
-    a.href=url; a.textContent=name; a.target='_blank'; a.rel='noopener';
-    footerLinksEl.appendChild(a);
-  }
-
-  // Enter Chaos scroll
-  document.getElementById('enter-chaos').addEventListener('click',()=>{
-    document.getElementById('about-qsd').scrollIntoView({behavior:'smooth'});
-  });
 }
 
-document.addEventListener('DOMContentLoaded', loadSite);
+function buildSiteModal() {
+  const overlay = document.createElement("div");
+  overlay.className = "modal-overlay";
+
+  const modal = document.createElement("div");
+  modal.className = "detail-modal artist-modal";
+  overlay.appendChild(modal);
+
+  overlay.addEventListener("click", (event) => {
+    if (event.target === overlay) {
+      closeSiteModal(overlay);
+    }
+  });
+
+  return { overlay, modal };
+}
+
+function showArtistInfo(artist) {
+  const { overlay, modal } = buildSiteModal();
+  const linksHtml = artist.links
+    ? Object.entries(artist.links)
+        .map(([label, url]) => `<a href="${url}" target="_blank" rel="noopener">${label}</a>`)
+        .join("")
+    : "";
+
+  modal.innerHTML = `
+    <div class="modal-cover-wrap">
+      ${artist.image ? `<img class="modal-cover" src="${artist.image}" alt="${artist.name || "Artist image"}">` : ""}
+    </div>
+    <div class="modal-copy">
+      <p class="modal-kicker">Artist</p>
+      <h2>${artist.name || "Unnamed artist"}</h2>
+      ${artist.bio ? `<p class="modal-description">${artist.bio}</p>` : ""}
+      ${linksHtml ? `<div class="artist-links">${linksHtml}</div>` : ""}
+    </div>
+  `;
+
+  const actions = document.createElement("div");
+  actions.className = "modal-actions modal-actions-full";
+
+  const closeButton = document.createElement("button");
+  closeButton.type = "button";
+  closeButton.className = "btn btn-secondary";
+  closeButton.textContent = "Close";
+  closeButton.addEventListener("click", () => {
+    closeSiteModal(overlay);
+  });
+
+  actions.appendChild(closeButton);
+  modal.appendChild(actions);
+  document.body.appendChild(overlay);
+}
+
+async function loadSite() {
+  const siteData = await loadJSON("assets/data/site.json");
+  const site = siteData.site;
+  const defaultTagline = "QueenServeantDonked is a project hosted by producer <strong>periyuh</strong>, as a social experiment revolving around satirical music, experimental sounds, and controversial topics, with albums releasing on April Fool's Day.";
+
+  if (document.getElementById("logo")) {
+    document.getElementById("logo").src = site.logo;
+  }
+
+  if (document.getElementById("site-name")) {
+    document.getElementById("site-name").textContent = site.name;
+  }
+
+  const taglineEl = document.getElementById("site-tagline");
+  if (taglineEl) {
+    taglineEl.innerHTML = site.tagline || defaultTagline;
+  }
+
+  const quoteEl = document.getElementById("chaos-quote");
+  if (quoteEl) {
+    const quotesData = await loadJSON(site.chaosQuotesJSON);
+    let currentQuote = 0;
+
+    function rotateQuote() {
+      quoteEl.textContent = quotesData.quotes[currentQuote];
+      currentQuote = (currentQuote + 1) % quotesData.quotes.length;
+    }
+
+    rotateQuote();
+    setInterval(rotateQuote, 5000);
+  }
+
+  const aboutCardsEl = document.getElementById("about-cards");
+  if (aboutCardsEl) {
+    const aboutCards = [
+      {
+        title: "What is QSD?",
+        content:
+          "QueenServeantDonked is a music project built around satire, recurring characters, and a connected world of albums, tracks, and inside jokes."
+      },
+      {
+        title: "How It Works",
+        content:
+          "New releases land around April Fool's Day, and each project adds more lore, callbacks, and crossover moments between songs and collaborators."
+      }
+    ];
+
+    aboutCards.forEach((card) => {
+      const div = document.createElement("div");
+      div.className = "about-card";
+      div.innerHTML = `<h3>${card.title}</h3><p>${card.content}</p>`;
+      aboutCardsEl.appendChild(div);
+    });
+  }
+
+  const artistsGrid = document.getElementById("artists-grid");
+  if (artistsGrid) {
+    const artistFiles = [
+      "periyuh.json",
+      "cameronreid.json",
+      "jinnawoods.json",
+      "kennafannee.json"
+      //"vividusbae.json"
+    ];
+    const artists = await fetchAllJSON(site.artistsJSON, artistFiles);
+
+    artists.forEach((artist) => {
+      const div = document.createElement("div");
+      div.className = "product";
+      div.style.cursor = "pointer";
+      div.innerHTML = `
+        <img src="${artist.image}" alt="${artist.name}">
+        <p><strong>${artist.name}</strong><br><span class="muted">Artist</span></p>`;
+      div.onclick = () => showArtistInfo(artist);
+      artistsGrid.appendChild(div);
+    });
+  }
+
+  const footerText = document.getElementById("footer-text");
+  if (footerText) {
+    footerText.textContent = `© 2026 ${site.name}`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", loadSite);

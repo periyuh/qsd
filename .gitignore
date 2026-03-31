@@ -21,3 +21,6 @@ files-list.js
 download-images.js
 test.html
 file_list.txt
+
+# old bot code and other historical junk
+legacy/

@@ -1,7 +1,7 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "unreasonable",
+    "album": ["EMOtional SLAYage", "Khaki Shorts"],
+    "trackNumber": [5, 4],
+    "title": "A Little Rant (Unreasonable)",
     "feature": null,
     "version": null,
     "length": null,

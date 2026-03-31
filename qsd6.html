@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QSD6 Countdown</title>
+
+<link rel="icon" type="image/png" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
+<link rel="apple-touch-icon" href="https://qsdtimes.vercel.app/assets/images/qsdicons/QSD - New Logo.png">
+<link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+
+<meta name="description" content="QSD6 countdown page.">
+
+<style>
+  :root {
+    --panel-bg: rgba(7, 7, 12, 0.72);
+    --panel-border: rgba(255, 255, 255, 0.16);
+    --text-main: #fff8fc;
+    --text-soft: #f1d7e4;
+    --accent: #ff4db8;
+    --accent-2: #39ff14;
+    --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: "Comic Neue", "Comic Sans MS", cursive;
+    color: var(--text-main);
+    background:
+      linear-gradient(rgba(8, 7, 14, 0.28), rgba(8, 7, 14, 0.58)),
+      url("assets/images/QSD6 Promo Square.png") center center / 100% 100% no-repeat fixed;
+  }
+
+  .countdown-shell {
+    width: min(620px, 100%);
+    padding: 18px 14px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--accent-2);
+    font-size: 0.82rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4.5vw, 3rem);
+    line-height: 1.02;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .time-block {
+    padding: 10px 8px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.22);
+  }
+
+  .time-value {
+    display: block;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .time-label {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.74rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #ffd6eb;
+  }
+
+  .launch-note {
+    margin: 16px 0 0;
+    color: #ffe9f4;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+
+  .btn-row {
+    margin-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 10px 18px;
+    border-radius: 999px;
+    text-decoration: none;
+    color: white;
+    background: rgba(255, 77, 184, 0.82);
+    font-weight: 700;
+    box-shadow: 0 10px 24px rgba(255, 77, 184, 0.22);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-1px);
+    background: rgba(255, 105, 196, 0.92);
+  }
+
+  @media (max-width: 700px) {
+    body {
+      padding: 14px;
+      background-attachment: scroll;
+    }
+
+    .countdown-shell {
+      padding: 12px 10px;
+    }
+
+    .countdown-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
+</head>
+<body>
+
+<main class="countdown-shell">
+  <h1>Going Mental: The Musical, the sixth studio album.</h1>
+
+  <section class="countdown-grid" aria-label="Countdown to QSD6 launch">
+    <div class="time-block">
+      <span id="days" class="time-value">00</span>
+      <span class="time-label">Days</span>
+    </div>
+    <div class="time-block">
+      <span id="hours" class="time-value">00</span>
+      <span class="time-label">Hours</span>
+    </div>
+    <div class="time-block">
+      <span id="minutes" class="time-value">00</span>
+      <span class="time-label">Minutes</span>
+    </div>
+    <div class="time-block">
+      <span id="seconds" class="time-value">00</span>
+      <span class="time-label">Seconds</span>
+    </div>
+  </section>
+
+  <p id="launch-note" class="launch-note">Countdown locked.</p>
+
+  <div class="btn-row">
+    <a href="https://forms.gle/qvW6Af7u9kZRmmvb8" class="btn" target="_blank" rel="noopener">Fill Out the Form</a>
+    <a href="index.html" class="btn">Main Page</a>
+  </div>
+</main>
+
+<script>
+  const launchDate = new Date("2026-06-01T04:00:00Z").getTime();
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
+  const launchNoteEl = document.getElementById("launch-note");
+
+  function pad(value) {
+    return String(value).padStart(2, "0");
+  }
+
+  function updateCountdown() {
+    const now = Date.now();
+    const distance = launchDate - now;
+
+    if (distance <= 0) {
+    daysEl.textContent = "00";
+    hoursEl.textContent = "00";
+    minutesEl.textContent = "00";
+    secondsEl.textContent = "00";
+      launchNoteEl.textContent = "";
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((distance / (1000 * 60)) % 60);
+    const seconds = Math.floor((distance / 1000) % 60);
+
+    daysEl.textContent = pad(days);
+    hoursEl.textContent = pad(hours);
+    minutesEl.textContent = pad(minutes);
+    secondsEl.textContent = pad(seconds);
+    launchNoteEl.textContent = "";
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>

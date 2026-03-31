@@ -1,0 +1,12 @@
+{
+  "site": {
+    "logo": "assets/images/qsdicons/QSD - New Logo.png",
+    "name": "QueenServeantDonked",
+    "chaosQuotesJSON": "assets/data/chaos-quotes.json",
+    "albumsJSON": "assets/albums",
+    "artistsJSON": "assets/artists",
+    "links": {
+      "Discord": "https://discord.gg/zrxwMQgYt7"
+    }
+  }
+}

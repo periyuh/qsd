@@ -1,11 +1,11 @@
 {
-    "album": "",
-    "trackNumber": 0,
-    "title": "whereissatpop",
-    "feature": null,
-    "version": null,
-    "length": null,
-    "bio": null,
-    "lyrics": null,
-    "coverArt": null
+    "album":["Khaki Shorts","The Candidates"],
+    "trackNumber":[1,4],
+    "title":"Where Issat Pop! (Like a Chicken)",
+    "feature":"NEWFM.666",
+    "version":null,
+    "length":"3:02",
+    "bio":"Sat pop query.",
+    "lyrics":["Where is sat pop?","Chaos"],
+    "coverArt":null
 }
